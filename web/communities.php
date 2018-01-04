@@ -38,4 +38,4 @@ if (!$stmt->execute()) {
 	die("Failed to execute $stmt");
 }
 
-echo $twig->render("communities.twig", ["communities" => $mysqli->getResult($stmt)]);
+echo $twig->render("communities.twig", ["communities" => $database->getResult($stmt)]);
