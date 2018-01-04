@@ -25,13 +25,13 @@ $core = new Core();
 $database = new Database();
 $twig = $core->initTwig();
 
-$stmt = $database->prepare("SELECT * FROM `communities`");
+$stmt = $database::prepare("SELECT * FROM `communities`");
 if (!$stmt):
 	error_log($database->error);
 	die($database->error);
 endif;
 
-if (!$stmt->execute()) {
+if (!$stmt::execute()) {
 	error_log("Failed to execute $stmt - " . $stmt->error);
 	die("Failed to execute $stmt");
 }
