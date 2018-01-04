@@ -2,14 +2,10 @@
 {% extends "_layout.twig" %}
 
 {% block mainContent %}
+Communities:
 <table>
-	<tr>
-		<th>ID</th>
-		<th>Name</th>
-	</tr>
 	{% for community in communities %}
 	<tr>
-		<td>{{community.id}}</td>
 		<td>{{community.name}}</td>
 	</tr>
 	{% endfor %}
