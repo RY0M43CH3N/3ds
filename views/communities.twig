@@ -1,0 +1,19 @@
+{% set title = "Communities" %}
+{% extends "_layout.twig" %}
+
+{% block mainContent %}
+<table style="width:100%">
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Description</th>
+	</tr>
+	{% for community in communities %}
+	<tr>
+		<td>{{community.id}}</td>
+		<td>{{community.name}}</td>
+		<td>{{community.description}}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}
