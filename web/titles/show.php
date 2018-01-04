@@ -1,2 +1,2 @@
 <?php
-echo("foxverse Take 1");
+header("Location: /");
