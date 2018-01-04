@@ -25,7 +25,7 @@ $core = new Core();
 $database = new Database();
 $twig = $core->initTwig();
 
-$mysqli = $database::connect();
+$mysqli = $database->connect();
 
 $stmt = $mysqli->prepare("SELECT * FROM `communities`");
 if (!$stmt):
