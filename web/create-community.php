@@ -31,13 +31,17 @@ $mysqli = $database->connect();
 if (!$mysqli)
 	die("Error while init'ing the database");
 
+$type = intval($_GET["type"]);
+$permission_level = intval($_GET["permission_level"]);
+$hidden = intval($_GET["hidden"]);
+
 $stmt = $mysqli->prepare("INSERT INTO `communities` (`id`, `name`, `description`, `title_id`, `type`, `permission_level`, `hidden`) VALUES (?, ?, ?, ?, ?, ?, ?)");
 if (!$stmt):
 	error_log($mysqli->error);
 	die($mysqli->error);
 endif;
 
-$stmt->bind_param("issiiii", $snowflake->generateID(), $_GET["name"], $_GET["description"], 0, intval($_GET["type"]) = 0, intval($_GET["permission_level"]) = 0, intval($_GET["hidden"]) = 0);
+$stmt->bind_param("issiiii", $snowflake->generateID(), $_GET["name"], $_GET["description"], 0, $type, $permission_level, $hidden);
 if (!$stmt->execute()) {
 	error_log("Failed to execute $stmt - " . $stmt->error);
 	die("Failed to execute $stmt");
