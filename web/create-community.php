@@ -37,7 +37,7 @@ if (!$stmt):
 	die($mysqli->error);
 endif;
 
-$stmt->bind_param("issiiii", $snowflake->generateID(), $_GET["name"], $_GET["description"], 0, intval($_GET["type"]), intval($_GET["permission_level"]), intval($_GET["hidden"]));
+$stmt->bind_param("issiiii", $snowflake->generateID(), $_GET["name"], $_GET["description"], 0, 0, 0, 0);
 if (!$stmt->execute()) {
 	error_log("Failed to execute $stmt - " . $stmt->error);
 	die("Failed to execute $stmt");
