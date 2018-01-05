@@ -35,7 +35,7 @@ $type = intval($_GET["type"]);
 $permission_level = intval($_GET["permission_level"]);
 $hidden = intval($_GET["hidden"]);
 
-$stmt = $mysqli->prepare("INSERT INTO `communities` (`id`, `name`, `description`, `title_id`) VALUES (?, ?, ?)");
+$stmt = $mysqli->prepare("INSERT INTO `communities` (`id`, `name`, `description`) VALUES (?, ?, ?)");
 if (!$stmt):
 	error_log($mysqli->error);
 	die($mysqli->error);
