@@ -43,4 +43,4 @@ if (!$stmt->execute()) {
 	die("Failed to execute $stmt");
 }
 
-echo("Created community, " . $_GET["name"])
+echo("Created community, " . $_GET["name"]);
