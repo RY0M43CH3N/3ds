@@ -29,7 +29,7 @@ $router->addRoutes(array(
 	array("GET|POST", "/titles/show", "show.php", "Titles-show"),
 	array("GET", "/", "activity-feed.php", "Activity-feed"),
 	array("GET", "/communities", "communities.php", "Communities-list"),
-	array("GET|POST", "/titles/[i:id]", "titles.php", "Titles-community"),
+	array("GET|POST", "/titles", "titles.php", "Titles-community"),
 	array("GET|POST", "/check_update.json", "check_update.php", "Check-update")
 ));
 
