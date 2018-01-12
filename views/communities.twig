@@ -33,9 +33,7 @@
 			<h2>General Communities</h2>
 		</div>
 		<ul class="list-content-with-icon-and-text arrow-list" id="community-top-content">
-			{% set i = 0 %}
 			{% for community in communities %}
-			{% if i < 6 %}
 			{% if community.hidden == 0 %}
 			{% if community.type == 0 %}
 			<li id="community-{{community.id}}" class=" has-other-communities">
@@ -55,18 +53,13 @@
 			</li>
 			{% endif %}
 			{% endif %}
-			{% endif %}
-			{% set i = i + 1 %}
 			{% endfor %}
 		</ul>
-		<a href="/communities/general_all" class="more-button scroll" data-pjax="1">Show More</a>
 		<div class="headline with-filter">
 			<h2>Game Communities</h2>
 		</div>
 		<ul class="list-content-with-icon-and-text arrow-list" id="community-top-content">
-			{% set i = 0 %}
 			{% for community in communities %}
-			{% if i < 6 %}
 			{% if community.hidden == 0 %}
 			{% if community.type > 0 and community.type < 4 %}
 			<li id="community-{{community.id}}" class=" has-other-communities">
@@ -92,18 +85,13 @@
 			</li>
 			{% endif %}
 			{% endif %}
-			{% endif %}
-			{% set i = i + 1 %}
 			{% endfor %}
 		</ul>
-		<a href="/communities/game_all" class="more-button scroll" data-pjax="1">Show More</a>
 		<div class="headline with-filter">
 			<h2>Special Communities</h2>
 		</div>
 		<ul class="list-content-with-icon-and-text arrow-list" id="community-top-content">
-			{% set i = 0 %}
 			{% for community in communities %}
-			{% if i < 6 %}
 			{% if community.hidden == 0 %}
 			{% if community.type == 4 %}
 			<li id="community-{{community.id}}" class=" has-other-communities">
@@ -123,11 +111,8 @@
 			</li>
 			{% endif %}
 			{% endif %}
-			{% endif %}
-			{% set i = i + 1 %}
 			{% endfor %}
 		</ul>
-		<a href="/communities/special_all" class="more-button scroll" data-pjax="1">Show More</a>
 	</div>
 </div>
 {% endblock %}
