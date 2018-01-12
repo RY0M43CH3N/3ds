@@ -33,7 +33,7 @@ if (!$stmt):
 	die($mysqli->error);
 endif;
 
-$stmt->bind_param("i", -215499880997580768);
+$stmt->bind_param("i", 1);
 if (!$stmt->execute()) {
 	error_log("Failed to execute $stmt - " . $stmt->error);
 	die("Failed to execute $stmt");
