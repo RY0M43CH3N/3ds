@@ -4,12 +4,15 @@
         <meta charset="utf-8">
         <title>foxverse - {{title}}</title>
         <link rel="stylesheet" type="text/css" href="/css/n3ds.css">
+        <!-- Cave emulation layer -->
         <script src="/js/src/cave-emulation.js"></script>
+        <!-- These were extracted from olv.js -->
         <script src="/js/n3ds/zepto.min.js"></script>
         <script src="/js/n3ds/deferred.min.js"></script>
         <script src="/js/n3ds/lodash.min.js"></script>
         <script src="/js/n3ds/backbone.min.js"></script>
-        <script src="/js/n3ds/olv-en.js"></script>
+        <!-- Now we get to the good stuff -->
+        <script src="/js/n3ds/olv.js"></script>
     </head>
     <body data-user-id="{{session.user.username}}" {{bodyData}} data-is-first-favorite="1" data-profile-url="/users/{{session.user.username}}">
         <div id="body" class="{{bodyClasses}}" data-region-id="0">
