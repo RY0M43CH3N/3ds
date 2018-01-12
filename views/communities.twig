@@ -34,7 +34,7 @@
 		</div>
 		<ul class="list-content-with-icon-and-text arrow-list" id="community-top-content">
 			{% for community in communities %}
-			{% if community.text_type == 0 %}
+			{% if community.type == 0 %}
 			<li id="community-{{community.id}}" class=" has-other-communities">
 				<span class="icon-container"><img src="{{community.icon}}" class="icon" width="48" height="48"></span>
 				<a href="/titles/{{community.id}}" class="arrow-button scroll" data-pjax="1"></a>
