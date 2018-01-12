@@ -2704,7 +2704,7 @@ var Olv = Olv || {};
         replyForm: function() {
             new e.View.Page.ReplyForm({
                 el: "body"
-            })
+            }), e.Toolbar.setVisible(false)
         },
         postMemo: function() {
             new e.View.Page.PostMemo({
@@ -2734,7 +2734,7 @@ var Olv = Olv || {};
         post: function() {
             new e.View.Page.Post({
                 el: "body"
-            }), e.Toolbar.setVisible(false)
+            })
         },
         reply: function() {
             new e.View.Page.Reply({
