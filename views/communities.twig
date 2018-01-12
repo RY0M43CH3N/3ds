@@ -31,20 +31,6 @@
   <div class="community-list">
     <div class="headline with-filter">
       <h2>Game Communities</h2>
-      <div class="with-filter-right">
-        <div class="select-button">
-          <label id="community-filter" class="">
-            <span class="select-button-content">Filter</span>
-            <select name="filter">
-              <option value="" selected="">Please make a selection.</option>
-              <option value="/communities/categories/wiiu_all">All Software</option>
-              <option value="/communities/categories/wiiu_game">Wii U Games</option>
-              <option value="/communities/categories/wiiu_virtualconsole">Virtual Console</option>
-              <option value="/communities/categories/wiiu_other">Others</option>
-            </select>
-          </label>
-        </div>
-      </div>
     </div>
     <ul class="list-content-with-icon-and-text arrow-list" id="community-top-content">
       {% for community in communities %}
