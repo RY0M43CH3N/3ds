@@ -776,7 +776,7 @@ var Olv = Olv || {};
                     var t = s.find(".community-container");
                     t.removeClass("none"), e.community_path ? t.find("a").attr("href", e.community_path) : t.find("a").removeAttr("href"), t.find("img").attr("src", e.community_icon_url), t.find(".community-container-inner").append(e.community_name)
                 }
-                "1" == e.can_post ? (s.find('input[name="olive_community_id"]').val(e.olive_community_id), s.find('input[name="olive_title_id"]').val(e.olive_title_id), s.toggleClass("forbidden", !1), s.find(".post-button").prop("disabled", !1)) : (s.find(".forbidden-message").toggleClass("none", !1), s.find(".forbidden-message").text(e.message))
+                "1" == e.can_post ? (s.find('input[name="olive_community_id"]').val(e.olive_community_id), s.toggleClass("forbidden", !1), s.find(".post-button").prop("disabled", !1)) : (s.find(".forbidden-message").toggleClass("none", !1), s.find(".forbidden-message").text(e.message))
             }).fail(function(e, t, i, o) {});
             s.attr("data-ls-key", i), s.find('input[name="ls_key"]').val(i), s.removeClass("none")
         },
