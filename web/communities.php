@@ -41,6 +41,6 @@ if (!$stmt->execute()) {
 }
 
 $snowflakeId = $snowflake->generateID();
-$snowflakeId .= $snowflakeId;
+$snowflakeId += $snowflakeId;
 echo $snowflakeId;
 //echo $twig->render("communities.twig", ["communities" => $database->getResult($stmt)]);
