@@ -39,4 +39,11 @@ if (!$stmt->execute()) {
 	die("Failed to execute $stmt");
 }
 
-echo $twig->render("titles.twig", ["communities" => $database->getResult($stmt)]);
+$communities = $database->getResult($stmt);
+
+if (!$communities) {
+	echo $twig->render("404.twig");
+	exit;
+}
+
+echo $twig->render("titles.twig", ["communities" => $communities]);
