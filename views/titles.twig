@@ -1,0 +1,43 @@
+{% set title,bodyClasses = community.name,"community-post-list" %}
+{% extends "_layout.html" %}
+
+{% block mainContent %}
+<div class="title-header with-header-banner">
+  <div class="header-banner-container post-subtype-default-container">
+    <img src="{{community.banner}}" height="168" width="400">
+  </div>
+  <h1 class="info-content">
+    <span class="icon-container"><img src="{{community.icon}}" class="icon" width="48" height="48"></span>
+    <span class="title-container">
+    <span class="title">{{community.name}}</span>
+    </span>
+  </h1>
+  {% if community.platform == 1 %}
+    <span class="platform-tag platform-tag-3ds"></span>
+  {% elseif community.platform == 2 %}
+    <span class="platform-tag platform-tag-wiiu"></span>
+  {% elseif community.platform == 3 %}
+    <span class="platform-tag platform-tag-wiiu-3ds"></span>
+  {% endif %}
+</div>
+<div id="header-meta" class="header-meta-with-description">
+  <a href="#" class="favorite-button symbol button top-right-button" data-action-favorite="/titles/{{community.id}}/favorite.json" data-action-unfavorite="/titles/{{community.id}}/unfavorite.json"></a>
+  <a href="/settings/titles/{{community.id}}" class="button symbol setting-button" data-sound="SE_OLV_OK_SUB" data-pjax="1"></a>
+</div>
+<div class="community-info">
+  <p class="text">{{community.description}}</p>
+</div>
+<div class="tab2">
+  <a id="tab-header-post" href="/titles/{{community.id}}/new" data-pjax="1" class="selected"><span class="symbol new-posts">All</span></a>
+  <a id="tab-header-hot-post" href="/titles/{{community.id}}/hot" class="symbol" data-pjax="1"><span class="name">Popular</span></a>
+</div>
+<div class="body-content tab3-content">
+  <div class="tab-body">
+    <div class="post-buttons-content with-memo-button">
+      <a href="/titles/{{community.id}}/post" class="post-button js-post-button " data-pjax="1"><span class="symbol">Post</span></a>
+      <a href="/titles/{{community.id}}/post_memo" class="memo-button" data-pjax="1"><span class="symbol">Saved Posts</span></a>
+    </div>
+    <p><a href="/titles/{{community.id}}" data-pjax="1" class="more-button scroll">Next</a></p>
+  </div>
+</div>
+{% endblock %}
