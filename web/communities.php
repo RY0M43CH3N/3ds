@@ -40,7 +40,6 @@ if (!$stmt->execute()) {
 	die("Failed to execute $stmt");
 }
 
-$snowflakeId = $snowflake->generateID();
-$snowflakeId += $snowflakeId;
+$snowflakeId = abs($snowflake->generateID());
 echo $snowflakeId;
 //echo $twig->render("communities.twig", ["communities" => $database->getResult($stmt)]);
