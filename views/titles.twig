@@ -2,6 +2,7 @@
 {% extends "_layout.twig" %}
 
 {% block mainContent %}
+{% for community in communities %}
 <div class="title-header with-header-banner">
   <div class="header-banner-container post-subtype-default-container">
     <img src="{{community.banner}}" height="168" width="400">
@@ -40,4 +41,5 @@
     <p><a href="/titles/{{community.id}}" data-pjax="1" class="more-button scroll">Next</a></p>
   </div>
 </div>
+{% endfor %}
 {% endblock %}

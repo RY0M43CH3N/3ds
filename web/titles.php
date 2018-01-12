@@ -27,7 +27,7 @@ $twig = $core->initTwig();
 
 $mysqli = $database->connect();
 
-$stmt = $mysqli->prepare("SELECT * FROM `communities`");
+$stmt = $mysqli->prepare("SELECT * FROM `communities` WHERE id = ? LIMIT 1");
 if (!$stmt):
 	error_log($mysqli->error);
 	die($mysqli->error);
@@ -39,4 +39,4 @@ if (!$stmt->execute()) {
 	die("Failed to execute $stmt");
 }
 
-echo $twig->render("titles.twig", ["community" => $database->getResult($stmt)]);
+echo $twig->render("titles.twig", ["communities" => $database->getResult($stmt)]);
