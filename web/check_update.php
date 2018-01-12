@@ -17,4 +17,4 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-echo json_encode(array("success" => 1));
+echo json_encode(array("success" => 1, "news" => array("unread_count" => 1)));
