@@ -2694,7 +2694,7 @@ var Olv = Olv || {};
         postForm: function() {
             new e.View.Page.PostForm({
                 el: "body"
-            }), e.Toolbar.setVisible(!1)
+            })
         },
         postDiaryForm: function() {
             new e.View.Page.PostDiaryForm({
