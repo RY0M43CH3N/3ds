@@ -1,23 +1,68 @@
-{% set title = "Communities" %}
+{% set title,bodyClasses = "Communities","community-top" %}
 {% extends "_layout.twig" %}
 
 {% block mainContent %}
-<div id="header">
-	<div id="header-body">
-		<h1 id="page-title"><span>Communities</span></h1>
-	</div>
+<div class="title-header text-header">
+  <div class="header-banner-container">
+    <div class="header-banner">
+      <p>Check out the communities for games that you play or games that you're curious about!</p>
+    </div>
+  </div>
+  <h1 class="info-content">
+    <span class="icon-container"></span>
+    <span class="title-container">
+    <span class="title">Communities</span>
+    </span>
+  </h1>
 </div>
-<div class="body-content">
-	<div class="no-content-window">
-		<div class="window">
-			<table>
-				{% for community in communities %}
-				<tr>
-					<td>{{community.name}}</td>
-				</tr>
-				{% endfor %}
-			</table>
-		</div>
-	</div>
+<div class="community-top-top-container">
+  <span class="top-left-button title-search-button"><span class="symbol">Search</span><input data-action="/titles/search" name="query" class="title-search-title-id" minlength="2" maxlength="20" type="text" monospace="on" guide="Search Communities" cave_oninput="$(document.activeElement).trigger('input')" value=""></span>
+  <a href="/communities/favorites" class="favorites-button top-right-button" data-pjax="1"><span class="symbol">Favorite Communities</span></a>
+</div>
+<div class="body-content" id="community-top">
+  <div class="news-label-content">
+  </div>
+  <div id="identified-user-banner" class="news-label us">
+    <a href="/identified_user_posts" data-pjax="#body">
+    <span class="title">Get the latest news here!</span>
+    <span class="text">Posts from Verified Users</span>
+    </a>
+  </div>
+  <div class="community-list">
+    <div class="headline with-filter">
+      <h2>Game Communities</h2>
+      <div class="with-filter-right">
+        <div class="select-button">
+          <label id="community-filter" class="">
+            <span class="select-button-content">Filter</span>
+            <select name="filter">
+              <option value="" selected="">Please make a selection.</option>
+              <option value="/communities/categories/wiiu_all">All Software</option>
+              <option value="/communities/categories/wiiu_game">Wii U Games</option>
+              <option value="/communities/categories/wiiu_virtualconsole">Virtual Console</option>
+              <option value="/communities/categories/wiiu_other">Others</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </div>
+    <ul class="list-content-with-icon-and-text arrow-list" id="community-top-content">
+      {% for community in communities %}
+        <li id="community-{{community.id}}" class=" has-other-communities">
+          <span class="icon-container"><img src="" class="icon" width="48" height="48"></span>
+          <a href="/titles/{{community.id}}" class="arrow-button scroll" data-pjax="1"></a>
+          <div class="body">
+            <span class="community-name title">{{community.name}}</span>
+            <span class="platform-tag"></span>
+            <span class="text"></span>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+    <a href="/communities/categories/wiiu_all" class="more-button scroll" data-pjax="1">Show More</a>
+    <h2 class="headline headline-special">Special Communities</h2>
+    <ul class="list-content-with-icon-and-text arrow-list" id="community-top-content">
+    </ul>
+  </div>
 </div>
 {% endblock %}

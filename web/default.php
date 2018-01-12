@@ -26,6 +26,7 @@ $twig = $core->initTwig();
 $router = new AltoRouter();
 
 $router->addRoutes(array(
+	array("GET", "/", "activity-feed.php", "Activity-feed"),
 	array("GET", "/communities", "communities.php", "Communities-list"),
 	array("GET", "/check_update.json", "check_update.php", "Check-update")
 ));
