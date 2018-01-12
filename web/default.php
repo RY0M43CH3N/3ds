@@ -36,7 +36,7 @@ $router->addRoutes(array(
 
 $match = $router->match(urldecode($_SERVER["REQUEST_URI"]));
 if ($match) {
-	foreach($match["params"] as &$param) {
+	foreach ($match["params"] as &$param) {
 		${key($match["params"])} = $param;
 	}
 	require_once $match["target"];

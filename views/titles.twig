@@ -1,4 +1,4 @@
-{% set title,bodyClasses = community.name,"community-post-list" %}
+{% set title,bodyClasses,bodyData = community.name,"community-post-list", "data-is-first-post=\"1\"" %}
 {% extends "_layout.twig" %}
 
 {% block mainContent %}

@@ -7,7 +7,7 @@
         <script src="/js/src/cave-emulation.js"></script>
         <script src="/js/n3ds/complete-en.js"></script>
     </head>
-    <body data-user-id="{{session.user.username}}" data-is-first-favorite="1" data-profile-url="/users/{{session.user.username}}">
+    <body data-user-id="{{session.user.username}}" {{bodyData}} data-is-first-favorite="1" data-profile-url="/users/{{session.user.username}}">
         <div id="body" class="{{bodyClasses}}" data-region-id="0">
             {% block mainContent %}
             {% endblock %}
