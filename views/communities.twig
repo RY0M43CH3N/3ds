@@ -34,6 +34,7 @@
 		</div>
 		<ul class="list-content-with-icon-and-text arrow-list" id="community-top-content">
 			{% for community in communities %}
+			{% if community.hidden == 0 %}
 			{% if community.type == 0 %}
 			<li id="community-{{community.id}}" class=" has-other-communities">
 				<span class="icon-container"><img src="{{community.icon}}" class="icon" width="48" height="48"></span>
@@ -51,6 +52,7 @@
 				</div>
 			</li>
 			{% endif %}
+			{% endif %}
 			{% endfor %}
 		</ul>
 		<a href="/communities/general_all" class="more-button scroll" data-pjax="1">Show More</a>
@@ -59,6 +61,7 @@
 		</div>
 		<ul class="list-content-with-icon-and-text arrow-list" id="community-top-content">
 			{% for community in communities %}
+			{% if community.hidden == 0 %}
 			{% if community.type > 0 and community.type < 4 %}
 			<li id="community-{{community.id}}" class=" has-other-communities">
 				<span class="icon-container"><img src="{{community.icon}}" class="icon" width="48" height="48"></span>
@@ -82,6 +85,7 @@
 				</div>
 			</li>
 			{% endif %}
+			{% endif %}
 			{% endfor %}
 		</ul>
 		<a href="/communities/game_all" class="more-button scroll" data-pjax="1">Show More</a>
@@ -90,6 +94,7 @@
 		</div>
 		<ul class="list-content-with-icon-and-text arrow-list" id="community-top-content">
 			{% for community in communities %}
+			{% if community.hidden == 0 %}
 			{% if community.type == 4 %}
 			<li id="community-{{community.id}}" class=" has-other-communities">
 				<span class="icon-container"><img src="{{community.icon}}" class="icon" width="48" height="48"></span>
@@ -106,6 +111,7 @@
 					<span class="text">Special Community</span>
 				</div>
 			</li>
+			{% endif %}
 			{% endif %}
 			{% endfor %}
 		</ul>
