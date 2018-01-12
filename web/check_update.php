@@ -17,27 +17,4 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-require_once("../lib/AltoRouter.php");
-require_once("../lib/Core.php");
-session_start();
-
-$core = new Core();
-$twig = $core->initTwig();
-$router = new AltoRouter();
-
-$router->addRoutes(array(
-	array("GET", "/communities", "communities.php", "Communities-list"),
-	array("GET", "/check_update.json", "check_update.php", "Check-update")
-));
-
-$match = $router->match(urldecode($_SERVER["REQUEST_URI"]));
-if ($match) {
-	foreach($match["params"] as &$param) {
-		${key($match["params"])} = $param;
-	}
-	require_once $match["target"];
-} else {
-	http_response_code(404);
-	echo $twig->render("404.twig");
-	exit;
-}
+echo json_encode(array('success' => 1));
