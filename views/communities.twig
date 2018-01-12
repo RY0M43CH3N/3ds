@@ -90,15 +90,23 @@
 		</div>
 		<ul class="list-content-with-icon-and-text arrow-list" id="community-top-content">
 			{% for community in communities %}
+			{% if community.type == 4 %}
 			<li id="community-{{community.id}}" class=" has-other-communities">
 				<span class="icon-container"><img src="{{community.icon}}" class="icon" width="48" height="48"></span>
 				<a href="/titles/{{community.id}}" class="arrow-button scroll" data-pjax="1"></a>
 				<div class="body">
 					<span class="community-name title">{{community.name}}</span>
-					<span class="platform-tag"></span>
-					<span class="text"></span>
+					{% if community.platform == 1 %}
+					<span class="platform-tag platform-tag-3ds"></span>
+					{% elseif community.platform == 2 %}
+					<span class="platform-tag platform-tag-wiiu"></span>
+					{% elseif community.platform == 3 %}
+					<span class="platform-tag platform-tag-wiiu-3ds"></span>
+					{% endif %}
+					<span class="text">Special Community</span>
 				</div>
 			</li>
+			{% endif %}
 			{% endfor %}
 		</ul>
 		<a href="/communities/special_all" class="more-button scroll" data-pjax="1">Show More</a>
