@@ -27,7 +27,7 @@ $twig = $core->initTwig();
 
 $mysqli = $database->connect();
 
-$stmt = $mysqli->prepare("SELECT * FROM `communities` WHERE id = ?");
+$stmt = $mysqli->prepare("SELECT * FROM communities WHERE id = ? LIMIT 1");
 if (!$stmt):
 	error_log($mysqli->error);
 	die($mysqli->error);
