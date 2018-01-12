@@ -19,12 +19,10 @@
 
 require_once("../lib/Core.php");
 require_once("../lib/Database.php");
-require_once("../lib/Snowflake.php");
 session_start();
 
 $core = new Core();
 $database = new Database();
-$snowflake = new Snowflake(1, 1);
 $twig = $core->initTwig();
 
 $mysqli = $database->connect();
@@ -40,6 +38,4 @@ if (!$stmt->execute()) {
 	die("Failed to execute $stmt");
 }
 
-$snowflakeId = abs($snowflake->generateID());
-echo $snowflakeId;
-//echo $twig->render("communities.twig", ["communities" => $database->getResult($stmt)]);
+echo $twig->render("communities.twig", ["communities" => $database->getResult($stmt)]);
