@@ -1,58 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
-        {% block headContent %}
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="http://assets.foxverse.xyz/css/3ds.css">
-        {% endblock %}
+        <title>foxverse - {{title}}</title>
+        <link rel="stylesheet" type="text/css" href="/css/n3ds.css">
+        <script src="/js/src/cave-emulation.js"></script>
+        <script src="/js/n3ds/complete-en.js"></script>
     </head>
-    <body>
-        <div class="header">
-            foxverse - {{title}}
-        </div>
-        <div style="margin-top: 200px; margin-left: 32px;">
+    <body data-user-id="{{session.user.username}}" data-is-first-favorite="1" data-profile-url="/users/{{session.user.username}}">
+        <div id="body" class="{{bodyClasses}}" data-region-id="0">
             {% block mainContent %}
             {% endblock %}
         </div>
-        <script type="text/javascript">
-            (function() {
-                var BUTTONS = {
-                    "EXIT": 0,
-                    "BACK": 1,
-                    "ACTIVITY": 2,
-                    "COMMUNITY": 3,
-                    "NOTIFICATION": 4,
-                    "MYMENU": 5,
-                    "GUIDE": 7,
-                    "BACK_KEY": 99
-                };
-
-                var BUTTONS_FUNCTIONS = {
-                    MYMENU: function() {
-                        window.location.href = "/profile";
-                    },
-                    ACTIVITY: function() {
-                        window.location.href = "/";
-                    },
-                    COMMUNITY: function() {
-                        window.location.href = "/communities";
-                    },
-                    NOTIFICATION: function() {
-                        window.location.href = "/notifications";
-                    }
-                };
-
-                cave.toolbar_setVisible(visibility = true);
-                cave.toolbar_setNotificationCount(0);
-
-                for (var prop in BUTTONS) {
-                    if (BUTTONS.hasOwnProperty(prop)) {
-                        cave.toolbar_setCallback(BUTTONS[prop], BUTTONS_FUNCTIONS[prop]);
-                    }
-                }
-
-                cave.snd_playBgm("{{bgm|default('BGM_CAVE_MAIN')}}");
-            })();
-        </script>
     </body>
 </html>

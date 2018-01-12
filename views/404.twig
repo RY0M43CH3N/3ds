@@ -1,22 +1,16 @@
-{% set title = "Communities" %}
+{% set title,bodyClasses = "Error","" %}
 {% extends "_layout.twig" %}
 
 {% block mainContent %}
 <div id="header">
 	<div id="header-body">
-		<h1 id="page-title"><span>Communities</span></h1>
+		<h1 id="page-title"><span>Error</span></h1>
 	</div>
 </div>
 <div class="body-content">
 	<div class="no-content-window">
 		<div class="window">
-			<table>
-				{% for community in communities %}
-				<tr>
-					<td>{{community.name}}</td>
-				</tr>
-				{% endfor %}
-			</table>
+			<p>The screen could not be displayed.</p>
 		</div>
 	</div>
 </div>
