@@ -17,31 +17,33 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-require_once("../lib/AltoRouter.php");
 require_once("../lib/Core.php");
+require_once("../lib/Database.php");
 session_start();
 
 $core = new Core();
+$database = new Database();
 $twig = $core->initTwig();
-$router = new AltoRouter();
 
-$router->addRoutes(array(
-	array("GET|POST", "/titles/show", "show.php", "Titles-show"),
-	array("GET", "/", "activity-feed.php", "Activity-feed"),
-	array("GET", "/communities", "communities.php", "Communities-list"),
-	array("GET", "/titles/[i:id]", "titles.php", "Titles-community"),
-	array("GET", "/titles/[i:id]/post", "postForm.php", "Titles-post"),
-	array("GET", "/check_update.json", "check_update.php", "Check-update")
-));
+$mysqli = $database->connect();
 
-$match = $router->match(urldecode($_SERVER["REQUEST_URI"]));
-if ($match) {
-	foreach($match["params"] as &$param) {
-		${key($match["params"])} = $param;
-	}
-	require_once $match["target"];
-} else {
-	http_response_code(404);
+$stmt = $mysqli->prepare("SELECT * FROM `communities` WHERE id = ? LIMIT 1");
+if (!$stmt):
+	error_log($mysqli->error);
+	die($mysqli->error);
+endif;
+
+$stmt->bind_param("i", $id);
+if (!$stmt->execute()) {
+	error_log("Failed to execute $stmt - " . $stmt->error);
+	die("Failed to execute $stmt");
+}
+
+$communities = $database->getResult($stmt);
+
+if (!$communities) {
 	echo $twig->render("404.twig");
 	exit;
 }
+
+echo $twig->render("postForm.twig", ["communities" => $communities]);
