@@ -2734,7 +2734,7 @@ var Olv = Olv || {};
         post: function() {
             new e.View.Page.Post({
                 el: "body"
-            }), e.Toolbar.setVisible(!0)
+            }), e.Toolbar.setVisible(!1)
         },
         reply: function() {
             new e.View.Page.Reply({
