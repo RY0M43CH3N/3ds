@@ -13,8 +13,9 @@
         <script src="/js/n3ds/backbone.min.js"></script>
         <!-- Now we get to the good stuff -->
         <script src="/js/n3ds/olv.js"></script>
+        <script src="/js/n3ds/olv.locale-en.js"></script>
     </head>
-    <body data-user-id="{{session.user.username}}" {{bodyData}} data-is-first-favorite="1" data-profile-url="/users/{{session.user.username}}">
+    <body data-user-id="{{session.user.username}}" data-is-first-favorite="1" data-profile-url="/users/{{session.user.username}}">
         <div id="body" class="{{bodyClasses}}" data-region-id="0">
             {% block mainContent %}
             {% endblock %}
