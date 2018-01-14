@@ -19,35 +19,42 @@
 
 require_once("../lib/Core.php");
 require_once("../lib/Database.php");
+
+/// Start session.
 session_start();
 
+/// Initialize our classes.
 $core = new Core();
 $database = new Database();
-$twig = $core->initTwig();
 
+/// Connect to MySQL.
 $mysqli = $database->connect();
 if (!$mysqli) {
 	error_log("Failed to connect to MySQL - " . $database->mysqli->error);
 	die("Failed to connect to MySQL");
 }
 
-$stmt = $mysqli->prepare("SELECT * FROM `communities` WHERE id = ?");
-if (!$stmt):
-	error_log($mysqli->error);
-	die($mysqli->error);
-endif;
+/// Let's get our console data, parse it and shove it into our session!
+$data = explode("\\", base64_decode($_SERVER["HTTP_X_NINTENDO_PARAMPACK"]));
+array_shift($data);
+array_pop($data);
 
-$stmt->bind_param("i", $id);
-if (!$stmt->execute()) {
-	error_log("Failed to execute $stmt - " . $stmt->error);
-	die("Failed to execute $stmt");
+for ($i = 0; $i < count($data); $i += 2) {
+    $_SESSION["console"]["ParamData"][$data[$i]] = $data[$i + 1];
 }
 
-$communities = $database->getResult($stmt)[0];
+/// Unset console data. (don't worry this still keep's it in session)
+unset($data);
 
-if (!$communities) {
-	echo $twig->render("404.twig");
-	exit;
+/// Grab's console data from transferable_id in our session
+$console = $core->getConsole($database, $mysqli, $_SESSION["console"]["ParamData"]["transferable_id"]);
+
+/// Console doesn't exist in database, let's redirect them to setup!
+if (!$console) {
+    header("Location: /setup");
+    exit;
 }
 
-echo $twig->render("postForm.twig", ["communities" => $communities]);
+/// Set our user session to the user the console is linked to and redirect to communities.
+$_SESSION["user"] = $core->getUser($database, $mysqli, $console["linked_pid"]);
+header("Location: /communities");

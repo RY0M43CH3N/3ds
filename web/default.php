@@ -26,8 +26,8 @@ $twig = $core->initTwig();
 $router = new AltoRouter();
 
 $router->addRoutes(array(
-	array("GET|POST", "/titles/show", "show.php", "Titles-show"),
-	array("GET", "/", "activity-feed.php", "Activity-feed"),
+	array("GET|POST", "/titles/show", "titlesShow.php", "Titles-show"),
+	array("GET", "/", "activityFeed.php", "Activity-feed"),
 	array("GET", "/communities", "communities.php", "Communities-list"),
 	array("GET", "/titles/[i:id]", "titles.php", "Titles-community"),
 	array("GET", "/titles/[i:id]/post", "postForm.php", "Titles-post"),
