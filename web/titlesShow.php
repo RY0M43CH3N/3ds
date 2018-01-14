@@ -20,6 +20,17 @@
 require_once("../lib/Core.php");
 require_once("../lib/Database.php");
 
+/*
+ * Language Codes:
+ * 0 - Japanese
+ * 1 - English
+ * 2 - German
+ * 3 - French
+ * 4 - Spanish
+ * 5 - Italian
+ * 6 - Dutch
+ */
+
 /// Start session.
 session_start();
 
