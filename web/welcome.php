@@ -22,4 +22,4 @@ session_start();
 
 $core = new Core();
 
-echo $twig->render("welcomeGuest.twig");
+echo $twig->render("welcome.twig");
