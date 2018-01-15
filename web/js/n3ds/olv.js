@@ -2674,7 +2674,7 @@ var Olv = Olv || {};
             "error/post_form/:page": "errorPostForm",
             "help/(:page)": "help",
             "guide/(:page)": "guide",
-            "register_guest": "guestRegister",
+            "register": "guestRegister",
             "*path": "defaultRoute"
         },
         defaultRoute: function(t) {
