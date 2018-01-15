@@ -26,7 +26,7 @@ $database = new Database();
 $mysqli = $database->connect();
 
 function registerError($str) {
-	header($_SERVER["REQUEST_URI"] . "?err=" . $str);
+	header("Location: " . $_SERVER["REQUEST_URI"] . "?err=" . $str);
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 if (isset($_GET["err"]) && !empty($_GET["err"])) {
-	echo $twig->render("register.twig", ["err" => $_GET["err"]]);
+	echo $twig->render("register.twig", ["err" => htmlspecialchars($_GET["err"])]);
 } else {
 	echo $twig->render("register.twig");
 }
