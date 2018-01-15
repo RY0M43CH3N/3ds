@@ -1348,16 +1348,6 @@ var Olv = Olv || {};
         initialize: function() {
             e.View.Page.Common.prototype.initialize.call(this), e.ScrollGuide.activate()
         }
-    }), e.View.Page.GuestRegister = e.View.Page.Common.extend({
-        /*events: {
-            "click a[href]": "onAnyLinkClick"
-        },
-        onAnyLinkClick: function(e) {
-            var t = $(e.currentTarget);
-            cave.ls_setGuestModeLaunched(!0), t.hasClass("register") && (e.preventDefault(), setTimeout(function() {
-                cave.jump_toAccount(1)
-            }, 0))
-        }*/
     }), e.View.Widget = e.View.Widget || {}, e.View.Widget.OverlaidPreview = Backbone.View.extend({
         events: {
             input: "onTextInput"
@@ -2862,10 +2852,10 @@ var Olv = Olv || {};
                 el: "body"
             })
         },
-        guestRegister: function() {
-            new e.View.Page.GuestRegister({
+        register: function() {
+            new e.View.Page.Common({
                 el: "body"
-            })
+            }), e.Toolbar.setVisible(!1)
         },
     }))
 }).call(this, Olv);
