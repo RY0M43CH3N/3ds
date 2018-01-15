@@ -22,10 +22,10 @@ require_once("../lib/Core.php");
 session_start();
 
 $core = new Core();
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	$database = new Database();
 	$mysqli = $database->connect();
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 	$stmt = $mysqli->prepare("SELECT * FROM `users`");
 	if (!$stmt):
