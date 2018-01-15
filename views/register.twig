@@ -10,6 +10,10 @@
 <div class="body-content">
 	<div class="no-content-window">
 		<div class="window">
+			{% if err is defined %}
+				<font color="red">{{err}}</font>
+				<br>
+			{% endif %}
 			<form method="POST" action="/register">
 				<font color="red">*</font>Display Name: <input type="text" name="display_name"><br>
 				<font color="red">*</font>Username: <input type="text" name="username"><br>

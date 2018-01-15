@@ -27,7 +27,7 @@ $core = new Core();
 	$mysqli = $database->connect();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-	echo("Registration has been temporarily disabled, sorry!");
+	header("Location: /register?err=Registration is currently disabled.");
 	exit;
 	/*$stmt = $mysqli->prepare("SELECT * FROM `users`");
 	if (!$stmt):
@@ -67,4 +67,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	echo("Please re-open Miiverse to start using foxverse!");
 }
 
-echo $twig->render("register.twig");
+if (isset($_GET["err"]) && !empty($_GET["err"])) {
+	echo $twig->render("register.twig", ["err" => $_GET["err"]]);
+} else {
+	echo $twig->render("register.twig");
+}
