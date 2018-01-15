@@ -27,7 +27,7 @@ $router = new AltoRouter();
 
 $router->addRoutes(array(
 	array("GET|POST", "/titles/show", "titlesShow.php", "Titles-show"),
-	array("GET", "/welcome", "welcome.php", "Welcome-page"),
+	array("GET", "/welcome_guest", "guestWelcome.php", "Guest-welcome"),
 	array("GET", "/", "activityFeed.php", "Activity-feed"),
 	array("GET", "/communities", "communities.php", "Communities-list"),
 	array("GET", "/titles/[i:id]", "titles.php", "Titles-community"),
