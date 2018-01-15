@@ -23,48 +23,16 @@ require_once("../lib/Core.php");
 session_start();
 
 $core = new Core();
-	$database = new Database();
-	$mysqli = $database->connect();
+$database = new Database();
+$mysqli = $database->connect();
+
+function registerError($str) {
+	header($_SERVER["REQUEST_URI"] . "?err=" . $str)
+}
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-	header("Location: /register?err=Registration is currently disabled.");
+	registerError("Registration is currently disabled.");
 	exit;
-	/*$stmt = $mysqli->prepare("SELECT * FROM `users`");
-	if (!$stmt):
-		error_log($mysqli->error);
-		die($mysqli->error);
-	endif;
-
-	if (!$stmt->execute()) {
-		error_log("Failed to execute $stmt - " . $stmt->error);
-		die("Failed to execute $stmt");
-	}
-
-	echo("ok");*/
-
-	$pid = 1799999999;
-
-	echo(" preparing1");
-
-	$stmt = $mysqli->prepare("INSERT INTO `users` (`user_pid`, `user_ip`, `user_display_name`, `user_username`, `user_password`, `user_nnid`, `user_email`, `user_country_id`, `user_systems_owned`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-	/*if (!$stmt):
-		echo("error");
-		error_log($mysqli->error);
-		die($mysqli->error);
-	endif;*/
-	echo(" preparing");
-
-	$systems_owned = 1;
-
-	$stmt->bind_param("issssssii", $pid, $_SERVER["REMOTE_ADDR"], $_POST["display_name"], $_POST["username"], password_hash($_POST["password"], PASSWORD_DEFAULT), $_POST["nnid"], $_POST["email"], $_SESSION["console"]["ParamData"], $systems_owned);
-	echo("binding");
-	if (!$stmt->execute()) {
-		echo("error");
-		error_log("Failed to execute $stmt - " . $stmt->error);
-		die("Failed to execute $stmt");
-	}
-
-	echo("Please re-open Miiverse to start using foxverse!");
 }
 
 if (isset($_GET["err"]) && !empty($_GET["err"])) {
