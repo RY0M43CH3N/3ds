@@ -2,14 +2,21 @@
 {% extends "_layout.twig" %}
 
 {% block mainContent %}
-<div id="welcome-start" class="guest-page">
-	<div class="window-page">
-		<div class="window welcome-window">
-			<div class="window-title">
-			<p>Registering is not implemented!.</p>
-		</div>
-		<div class="window-body">
-			<p>Coming soon?</p>
+<div id="header">
+	<div id="header-body">
+		<h1 id="page-title"><span>Register</span></h1>
+	</div>
+</div>
+<div class="body-content">
+	<div class="no-content-window">
+		<div class="window">
+			<form action="/register">
+				Display Name: <input type="text" name="display_name"><br>
+				Username: <input type="text" name="username"><br>
+				Password: <input type="passoword" name="password"><br>
+				NNID: <input type="text" name="nnid"><br>
+				<input type="submit" class="black-button" value="Register">
+			</form>
 		</div>
 	</div>
 </div>
