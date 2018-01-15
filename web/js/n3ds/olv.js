@@ -1258,7 +1258,7 @@ var Olv = Olv || {};
             })
         }
     }), e.View.Page.GuestWelcome = e.View.Page.Common.extend({
-        events: {
+        /*events: {
             "click a[href]": "onAnyLinkClick"
         },
         onAnyLinkClick: function(e) {
@@ -1266,7 +1266,7 @@ var Olv = Olv || {};
             cave.ls_setGuestModeLaunched(!0), t.hasClass("register") && (e.preventDefault(), setTimeout(function() {
                 cave.jump_toAccount(1)
             }, 0))
-        }
+        }*/
     }), e.View.Page.Users = e.View.Page.Common.extend({
         events: {
             "click .cancel-button": function() {
@@ -1348,6 +1348,16 @@ var Olv = Olv || {};
         initialize: function() {
             e.View.Page.Common.prototype.initialize.call(this), e.ScrollGuide.activate()
         }
+    }), e.View.Page.GuestRegister = e.View.Page.Common.extend({
+        /*events: {
+            "click a[href]": "onAnyLinkClick"
+        },
+        onAnyLinkClick: function(e) {
+            var t = $(e.currentTarget);
+            cave.ls_setGuestModeLaunched(!0), t.hasClass("register") && (e.preventDefault(), setTimeout(function() {
+                cave.jump_toAccount(1)
+            }, 0))
+        }*/
     }), e.View.Widget = e.View.Widget || {}, e.View.Widget.OverlaidPreview = Backbone.View.extend({
         events: {
             input: "onTextInput"
@@ -2674,6 +2684,7 @@ var Olv = Olv || {};
             "error/post_form/:page": "errorPostForm",
             "help/(:page)": "help",
             "guide/(:page)": "guide",
+            "register_guest": "guestRegister",
             "*path": "defaultRoute"
         },
         defaultRoute: function(t) {
@@ -2850,6 +2861,11 @@ var Olv = Olv || {};
             new e.View.Page.PostFormError({
                 el: "body"
             })
-        }
+        },
+        guestRegister: function() {
+            new e.View.Page.GuestRegister({
+                el: "body"
+            })
+        },
     }))
 }).call(this, Olv);
