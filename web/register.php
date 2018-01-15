@@ -44,8 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 	echo(" preparing1");
 
-	$stmt = $mysqli->prepare("INSERT INTO `users` (`user_pid`, `user_creation_date`, `user_ip`, `user_display_name`, `user_username`, `user_password`, `user_nnid`, `user_email`, `user_country_id`, `user_systems_owned`) 
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+	$stmt = $mysqli->prepare("INSERT INTO `users` (`user_pid`, `user_ip`, `user_display_name`, `user_username`, `user_password`, `user_nnid`, `user_email`, `user_country_id`, `user_systems_owned`) 
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 	if (!$stmt):
 		echo("error");
 		error_log($mysqli->error);
