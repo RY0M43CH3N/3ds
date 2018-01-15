@@ -17,7 +17,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-error_reporting(-1);
 require_once("../lib/Database.php");
 require_once("../lib/Core.php");
 session_start();
@@ -27,7 +26,7 @@ $database = new Database();
 $mysqli = $database->connect();
 
 function registerError($str) {
-	header($_SERVER["REQUEST_URI"] . "?err=" . $str)
+	header($_SERVER["REQUEST_URI"] . "?err=" . $str);
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
