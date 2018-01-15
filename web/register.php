@@ -30,8 +30,9 @@ function registerError($str) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-	registerError("Registration is currently disabled.");
-	exit;
+	//registerError("Registration is currently disabled.");
+	//exit;
+	echo $twig->render("registerSuccess.twig");
 }
 
 if (isset($_GET["err"]) && !empty($_GET["err"])) {
