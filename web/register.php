@@ -27,7 +27,8 @@ $core = new Core();
 	$mysqli = $database->connect();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
+	echo("Registration has been temporarily disabled, sorry!");
+	exit;
 	/*$stmt = $mysqli->prepare("SELECT * FROM `users`");
 	if (!$stmt):
 		error_log($mysqli->error);
