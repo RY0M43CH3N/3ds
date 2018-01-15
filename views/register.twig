@@ -14,13 +14,13 @@
 				<font color="red">{{err}}</font>
 				<br><br>
 			{% endif %}
-			<form method="POST" action="/register">
+			<form method="POST" action="/register" data-pjax="1">
 				<font color="red">*</font>Display Name: <input type="text" name="display_name"><br>
 				<font color="red">*</font>Username: <input type="text" name="username"><br>
 				<font color="red">*</font>Password: <input type="password" name="password"><br>
 				<font color="red">*</font>Email: <input type="text" name="email"><br>
 				Nintendo Network ID: <input type="text" name="nnid"><br><br>
-				<input type="submit" class="black-button" value="Register">
+				<input type="submit" class="black-button" value="Register" data-pjax="1">
 			</form>
 		</div>
 	</div>
