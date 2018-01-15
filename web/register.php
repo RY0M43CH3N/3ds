@@ -17,9 +17,43 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+require_once("../lib/Database.php");
 require_once("../lib/Core.php");
 session_start();
 
 $core = new Core();
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+	$database = new Database();
+	$mysqli = $database->connect();
+
+	$stmt = $mysqli->prepare("SELECT * FROM `users`");
+	if (!$stmt):
+		error_log($mysqli->error);
+		die($mysqli->error);
+	endif;
+
+	if (!$stmt->execute()) {
+		error_log("Failed to execute $stmt - " . $stmt->error);
+		die("Failed to execute $stmt");
+	}
+
+	$pid = 1799999999 - $stmt->affected_rows;
+
+	$stmt = $mysqli->prepare("INSERT INTO `users` (`user_pid`, `user_creation_date`, `user_ip`, `user_display_name`, `user_username`, `user_password`, `user_nnid`, `user_email`, `user_country_id`, `user_systems_owned`) 
+		VALUES (?, NOW(), ?, ?, ?, ?, ?, ?, ?, ?)");
+	if (!$stmt):
+		error_log($mysqli->error);
+		die($mysqli->error);
+	endif;
+
+	$stmt->bind_param("i", $pid, $_SERVER["REMOTE_ADDR"], $_POST["display_name"], $_POST["username"], password_hash($_POST["password"], PASSWORD_DEFAULT), null, $_POST["email"], $_SESSION["console"]["ParamData"], 1);
+	if (!$stmt->execute()) {
+		error_log("Failed to execute $stmt - " . $stmt->error);
+		die("Failed to execute $stmt");
+	}
+
+	echo("Please re-open Miiverse to start using foxverse!");
+}
 
 echo $twig->render("register.twig");
