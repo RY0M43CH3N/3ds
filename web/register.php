@@ -48,11 +48,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		error_log($mysqli->error);
 		die($mysqli->error);
 	endif;
+	echo(" preparing");
 
 	$systems_owned = 1;
 
 	$stmt->bind_param("issssssii", $pid, $_SERVER["REMOTE_ADDR"], $_POST["display_name"], $_POST["username"], password_hash($_POST["password"], PASSWORD_DEFAULT), $_POST["nnid"], $_POST["email"], $_SESSION["console"]["ParamData"], $systems_owned);
+	echo("binding");
 	if (!$stmt->execute()) {
+		echo("error");
 		error_log("Failed to execute $stmt - " . $stmt->error);
 		die("Failed to execute $stmt");
 	}
