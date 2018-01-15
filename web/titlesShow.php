@@ -20,17 +20,6 @@
 require_once("../lib/Core.php");
 require_once("../lib/Database.php");
 
-/*
- * Language Codes:
- * 0 - Japanese
- * 1 - English
- * 2 - German
- * 3 - French
- * 4 - Spanish
- * 5 - Italian
- * 6 - Dutch
- */
-
 /// Start session.
 session_start();
 
@@ -57,12 +46,24 @@ for ($i = 0; $i < count($data); $i += 2) {
 /// Unset console data. (don't worry this still keep's it in session)
 unset($data);
 
+/*
+ * Language Codes:
+ * 0 - Japanese
+ * 1 - English
+ * 2 - German
+ * 3 - French
+ * 4 - Spanish
+ * 5 - Italian
+ * 6 - Dutch
+ */
+/// Translation soon
+
 /// Grab's console data from transferable_id in our session
 $console = $core->getConsoleByTid($database, $mysqli, $_SESSION["console"]["ParamData"]["transferable_id"]);
 
 /// Console doesn't exist in database, let's redirect them to setup!
 if (!$console) {
-    header("Location: /setup");
+    header("Location: /welcome_guest");
     exit;
 }
 

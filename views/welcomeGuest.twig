@@ -1,0 +1,20 @@
+{% set title,bodyClasses = "Welcome to foxverse!","" %}
+{% extends "_layout.twig" %}
+
+{% block mainContent %}
+<div id="welcome-start" class="guest-page">
+	<div class="window-page">
+		<div class="window welcome-window">
+			<div class="window-title">
+			<p>foxverse is a gaming community that connects people from all over the world using Mii characters.
+			Use foxverse to share your gaming experiences and meet people from around the world.</p>
+		</div>
+		<div class="window-body">
+			<div class="window-body-inner message">
+				<a href="#" class="black-button">Sign Up</a>
+				<a href="#" class="black-button">Sign In</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
