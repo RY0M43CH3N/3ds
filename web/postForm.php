@@ -31,23 +31,33 @@ if (!$mysqli) {
 	die("Failed to connect to MySQL");
 }
 
-$stmt = $mysqli->prepare("SELECT * FROM `communities` WHERE id = ?");
+$stmt = $mysqli->prepare("SELECT * FROM `communities` WHERE `community_id` = ?");
 if (!$stmt):
 	error_log($mysqli->error);
 	die($mysqli->error);
 endif;
 
-$stmt->bind_param("i", $id);
+$titleid2 = 1;
+
+$stmt->bind_param("i", $titleid2);
 if (!$stmt->execute()) {
 	error_log("Failed to execute $stmt - " . $stmt->error);
 	die("Failed to execute $stmt");
 }
 
-$communities = $database->getResult($stmt)[0];
+$community = $database->getResult($stmt)[0];
 
-if (!$communities) {
+if (!$community) {
 	echo $twig->render("404.twig");
 	exit;
 }
 
-echo $twig->render("postForm.twig", ["communities" => $communities]);
+$feelings = array();
+$feelings["normal_face"] = $core->getFeelingImage($_SESSION["user"]["user_nnid"]);
+$feelings["happy_face"] = $core->getFeelingImage($_SESSION["user"]["user_nnid"], "happy_face");
+$feelings["like_face"] = $core->getFeelingImage($_SESSION["user"]["user_nnid"], "like_face");
+$feelings["surprised_face"] = $core->getFeelingImage($_SESSION["user"]["user_nnid"], "surprised_face");
+$feelings["frustrated_face"] = $core->getFeelingImage($_SESSION["user"]["user_nnid"], "frustrated_face");
+$feelings["puzzled_face"] = $core->getFeelingImage($_SESSION["user"]["user_nnid"], "puzzled_face");
+
+echo $twig->render("postForm.twig", ["community" => $community, "feelings" => $feelings]);
