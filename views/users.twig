@@ -1,4 +1,4 @@
-{% set title,bodyClasses = "user.user_display_name's Profile","user-page" %}
+{% set title,bodyClasses = "{{user.user_display_name}}'s Profile","user-page" %}
 {% extends "_layout.twig" %}
 
 {% block mainContent %}
@@ -6,7 +6,7 @@
   <div id="user-content" class="user-page">
     <div id="header">
       <div id="header-body">
-        <h1 id="page-title"><span>{{user.display_name}}'s Profile</span></h1>
+        <h1 id="page-title"><span>{{user.user_display_name}}'s Profile</span></h1>
       </div>
     </div>
     <div class="icon-name-container">
