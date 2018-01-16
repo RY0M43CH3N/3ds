@@ -69,9 +69,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		}
 
 		$nnid = $_POST["nnid"];
-	} else {
-		errorRedirect("Please enter a Nintendo Network ID.");
-		exit;
 	}
 	echo $twig->render("registerSuccess.twig");
 	exit;
