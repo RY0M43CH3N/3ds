@@ -50,6 +50,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		exit;
 	}
 
+	if (isset($_POST["password"]) && !empty($_POST["password"])) {
+		if (strlen($_POST["password"]) < 6) {
+			errorRedirect("Password length must be above 6.");
+			exit;
+		}
+	} else {
+		errorRedirect("Please enter a password.");
+		exit;
+	}
+
 	if (isset($_POST["email"]) && !empty($_POST["email"])) {
 		if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
 			errorRedirect("Invalid email, please enter a valid email.");
@@ -62,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 	$nnid = null;
 
-	if (isset($_POST["nnid"]) && !empty($_POST["email"])) {
+	if (isset($_POST["nnid"]) && !empty($_POST["nnid"])) {
 		if (strlen($_POST["nnid"]) < 6 || strlen($_POST["nnid"]) > 16) {
 			errorRedirect("Nintendo Network ID length must be between 6-16.");
 			exit;
