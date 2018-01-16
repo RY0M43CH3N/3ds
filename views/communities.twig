@@ -36,8 +36,8 @@
 			{% set i = 0 %}
 			{% for community in communities %}
 				{% if i < 6 %}
-					{% if community.hidden == 0 %}
-						{% if community.type == 0 %}
+					{% if community.community_hidden == 0 %}
+						{% if community.community_type == 0 %}
 							<li id="community-{{community.id}}" class=" has-other-communities">
 								<span class="icon-container"><img src="{{community.community_icon}}" class="icon" width="48" height="48"></span>
 								<a href="/titles/{{community.community_title_id}}/{{community.community_id}}" class="arrow-button scroll" data-pjax="1"></a>
@@ -67,8 +67,8 @@
 			{% set i = 0 %}
 			{% for community in communities %}
 				{% if i < 6 %}
-					{% if community.hidden == 0 %}
-						{% if community.type > 0 and community.type < 4 %}
+					{% if community.community_hidden == 0 %}
+						{% if community.community_type > 0 and community.community_type < 4 %}
 							<li id="community-{{community.id}}" class=" has-other-communities">
 								<span class="icon-container"><img src="{{community.community_icon}}" class="icon" width="48" height="48"></span>
 								<a href="/titles/{{community.community_title_id}}/{{community.community_id}}" class="arrow-button scroll" data-pjax="1"></a>
@@ -104,8 +104,8 @@
 			{% set i = 0 %}
 			{% for community in communities %}
 				{% if i < 6 %}
-					{% if community.hidden == 0 %}
-						{% if community.type == 4 %}
+					{% if community.community_hidden == 0 %}
+						{% if community.community_type == 4 %}
 							<li id="community-{{community.id}}" class=" has-other-communities">
 								<span class="icon-container"><img src="{{community.community_icon}}" class="icon" width="48" height="48"></span>
 								<a href="/titles/{{community.community_title_id}}/{{community.community_id}}" class="arrow-button scroll" data-pjax="1"></a>
