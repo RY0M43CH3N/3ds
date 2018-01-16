@@ -39,7 +39,7 @@ if (!$stmt->execute()) {
 }
 
 $user = $database->getResult($stmt)[0];
-unset($user["user_password"]);
+unset($user["user_password"], $user["user_email"], $user["user_ip"]);
 $user["user_icon"] = $core->getFeelingImage($user["user_nnid"]);
 $user["user_username"] = htmlspecialchars($user["user_username"]);
 
