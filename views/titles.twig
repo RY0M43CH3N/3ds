@@ -1,10 +1,10 @@
-{% set title,bodyClasses = community.name,"community-post-list" %}
+{% set title,bodyClasses = community.community_name,"community-post-list" %}
 {% extends "_layout.twig" %}
 
 {% block mainContent %}
 <div class="title-header with-header-banner">
   <div class="header-banner-container post-subtype-default-container">
-    <img src="{{community.banner}}" height="168" width="400">
+    <img src="{{community.community_banner}}" height="168" width="400">
   </div>
   <h1 class="info-content">
     <span class="icon-container"><img src="{{community.community_icon}}" class="icon" width="48" height="48"></span>

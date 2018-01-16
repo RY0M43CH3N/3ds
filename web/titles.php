@@ -41,9 +41,9 @@ if (!$stmt->execute()) {
 
 $community = $database->getResult($stmt)[0];
 
-/*if (!$community) {
+if (!$community) {
 	echo $twig->render("404.twig");
 	exit;
-}*/
+}
 
 echo $twig->render("titles.twig", ["community" => $community]);
