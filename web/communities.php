@@ -19,7 +19,6 @@
 
 require_once("../lib/Core.php");
 require_once("../lib/Database.php");
-session_start();
 
 $core = new Core();
 $database = new Database();
