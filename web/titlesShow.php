@@ -63,7 +63,7 @@ $console = $core->getConsole($database, $mysqli, $_SESSION["console"]["ParamData
 
 /// Console doesn't exist in database, let's redirect them to setup!
 if (!$console) {
-    header("Location: /welcome_guest");
+    header("Location: /welcome");
     exit;
 }
 

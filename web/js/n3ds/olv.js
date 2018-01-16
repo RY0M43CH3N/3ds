@@ -1257,16 +1257,6 @@ var Olv = Olv || {};
                 }), i.trigger("olv:achievement:update")
             })
         }
-    }), e.View.Page.GuestWelcome = e.View.Page.Common.extend({
-        /*events: {
-            "click a[href]": "onAnyLinkClick"
-        },
-        onAnyLinkClick: function(e) {
-            var t = $(e.currentTarget);
-            cave.ls_setGuestModeLaunched(!0), t.hasClass("register") && (e.preventDefault(), setTimeout(function() {
-                cave.jump_toAccount(1)
-            }, 0))
-        }*/
     }), e.View.Page.Users = e.View.Page.Common.extend({
         events: {
             "click .cancel-button": function() {
@@ -1798,7 +1788,7 @@ var Olv = Olv || {};
         }
     }), e.View.Widget.ToolbarVisibility = Backbone.View.extend({
         initialize: function() {
-            var t = !/^\/(?:titles\/.+\/.+\/(?:topic\/|artwork\/)?(?:post)|users\/.+\/diary\/post|posts\/.+\/reply|welcome\/(?:3ds|redesign_tutorial)?|warning\/.+|welcome_guest|titles\/.+\/select_album_image)$/.test(location.pathname);
+            var t = !/^\/(?:titles\/.+\/.+\/(?:topic\/|artwork\/)?(?:post)|users\/.+\/diary\/post|posts\/.+\/reply|welcome\/(?:3ds|redesign_tutorial)?|warning\/.+|welcome|register|titles\/.+\/select_album_image)$/.test(location.pathname);
             e.Toolbar.setVisible(t)
         }
     }), e.View.Widget.HomeButton = Backbone.View.extend({
@@ -2666,7 +2656,7 @@ var Olv = Olv || {};
             my_blacklist: "blacklist",
             "welcome/(3ds)": "welcome",
             "welcome/profile": "welcomeProfile",
-            welcome_guest: "guestWelcome",
+            welcome: "welcomePage",
             "welcome/favorite_community_visibility": "welcomeFavoriteCommunityVisibility",
             users: "users",
             "news/my_news": "my_news",
@@ -2812,8 +2802,8 @@ var Olv = Olv || {};
                 el: "body"
             })
         },
-        guestWelcome: function() {
-            new e.View.Page.GuestWelcome({
+        welcomePage: function() {
+            new e.View.Page.Common({
                 el: "body"
             })
         },
@@ -2855,7 +2845,7 @@ var Olv = Olv || {};
         register: function() {
             new e.View.Page.Common({
                 el: "body"
-            }), e.Toolbar.setVisible(!1)
+            })
         },
     }))
 }).call(this, Olv);
