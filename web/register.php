@@ -82,7 +82,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	}
 
 	$result = $mysqli->query("SELECT * `users`");
-    $pid = 1799999999 - $result->num_rows;
+	$count = $result->num_rows;
+    $pid = 1799999999 - $count;
     //$result->close();
 
 
