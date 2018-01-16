@@ -81,10 +81,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		$nnid = $_POST["nnid"];
 	}
 
-	$result = $mysqli->query("SELECT * `users`");
-	$count = $result->num_rows;
-    $pid = 1799999999 - $count;
-    //$result->close();
+	$result = $mysqli->query("SELECT * FROM `users`");
+    $pid = 1799999999 - $result->num_rows;
+    $result->close();
 
 
 	$stmt = $mysqli->prepare("INSERT INTO `users` (`user_pid`, `user_ip`, `user_display_name`, `user_username`, `user_password`, `user_nnid`, `user_email`, `user_country_id`, `user_systems_owned`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
