@@ -40,5 +40,6 @@ if (!$stmt->execute()) {
 
 $user = $database->getResult($stmt)[0];
 $user["user_icon"] = $core->getFeelingImage($user["user_nnid"]);
+$user["user_username"] = htmlspecialchars($user["user_username"]);
 
 echo $twig->render("users.twig", ["user" => $user]);
