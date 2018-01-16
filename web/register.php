@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		$nnid = $_POST["nnid"];
 	}
 
-	if (!$_SESSION["console"]["ParamData"]["transferable_id"] || !$_SESSION["console"]["ParamData"]["country_id"]) {
+	if (!isset($_SESSION["console"]["ParamData"]["transferable_id"]) || !isset($_SESSION["console"]["ParamData"]["country_id"])) {
 		errorRedirect("An unknown error has occured while signing up.");
 		exit;
 	}
