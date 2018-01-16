@@ -31,7 +31,7 @@ $router->addRoutes(array(
 	array("GET|POST", "/register", "register.php", "Guest-register"),
 	array("GET", "/", "activityFeed.php", "Activity-feed"),
 	array("GET", "/communities", "communities.php", "Communities-list"),
-	array("GET", "/titles/[i:title_id]/[i:id]", "titles.php", "Titles-community"),
+	array("GET", "/titles/[i:title]/[i:id]", "titles.php", "Titles-community"),
 	array("GET", "/users/[*:id]", "users.php", "Users-profile"),
 	array("GET", "/titles/[i:title_id]/[i:id]/post", "postForm.php", "Titles-post"),
 	array("GET", "/check_update.json", "check_update.php", "Check-update")
