@@ -27,7 +27,7 @@ $twig = $core->initTwig();
 
 $mysqli = $database->connect();
 
-$stmt = $mysqli->prepare("SELECT * FROM `communities` WHERE id = ?");
+$stmt = $mysqli->prepare("SELECT * FROM `communities` WHERE community_id = ?");
 if (!$stmt):
 	error_log($mysqli->error);
 	die($mysqli->error);
@@ -39,11 +39,11 @@ if (!$stmt->execute()) {
 	die("Failed to execute $stmt");
 }
 
-$communities = $database->getResult($stmt)[0];
+$community = $database->getResult($stmt)[0];
 
-if (!$communities) {
+if (!$community) {
 	echo $twig->render("404.twig");
 	exit;
 }
 
-echo $twig->render("titles.twig", ["communities" => $communities]);
+echo $twig->render("titles.twig", ["community" => $community]);
