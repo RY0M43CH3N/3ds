@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	$pass = password_hash($_POST["password"], PASSWORD_DEFAULT);
 	unset($_POST["password"]);
 
-	$stmt->bind_param("issssssii", $pid, $ip, $_POST["display_name"], $_POST["username"], $pass, $nnid, $_POST["email"], $_SESSION["console"]["ParamData"], $systems_owned);
+	$stmt->bind_param("issssssii", $pid, $ip, $_POST["display_name"], $_POST["username"], $pass, $nnid, $_POST["email"], $_SESSION["console"]["ParamData"]["country_id"], $systems_owned);
 	if (!$stmt->execute()) {
 		error_log("Failed to execute $stmt - " . $stmt->error);
 		die("Failed to execute $stmt");
