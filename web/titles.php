@@ -27,23 +27,23 @@ $twig = $core->initTwig();
 
 $mysqli = $database->connect();
 
-$stmt = $mysqli->prepare("SELECT * FROM `communities` WHERE `community_title_id` = ?");
+$stmt = $mysqli->prepare("SELECT * FROM `communities` WHERE `community_id` = ?");
 if (!$stmt):
 	error_log($mysqli->error);
 	die($mysqli->error);
 endif;
 
-$stmt->bind_param("i", $id);
+$stmt->bind_param("i", 1);
 if (!$stmt->execute()) {
 	error_log("Failed to execute $stmt - " . $stmt->error);
 	die("Failed to execute $stmt");
 }
 
-$community = $database->getResult($stmt);
+$community = $database->getResult($stmt)[0];
 
 if (!$community) {
 	echo $twig->render("404.twig");
 	exit;
 }
 
-echo $twig->render("titles.twig", ["community" => $community[0]]);
+echo $twig->render("titles.twig", ["community" => $community]);
