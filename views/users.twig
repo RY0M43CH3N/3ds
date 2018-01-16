@@ -1,4 +1,4 @@
-{% set title,bodyClasses = "{{user.display_name}}'s Profile","user-page" %}
+{% set title,bodyClasses = "{{user.user_display_name}}'s Profile","user-page" %}
 {% extends "_layout.twig" %}
 
 {% block mainContent %}
@@ -12,7 +12,7 @@
     <div class="icon-name-container">
       <div class="user-icon-container"><img src="{{user.user_icon}}" class="user-icon" width="32" height="32"></div>
       <p class="title">
-        <span class="nick-name">{{user.display_name}}</span>
+        <span class="nick-name">{{user.user_display_name}}</span>
         <span class="id-name">{{user.user_username}}</span>
       </p>
     </div>
@@ -23,12 +23,12 @@
         <select>
           <option value="" selected="">Please make a selection.</option>
           <option value="/users/{{user.user_username}}/violators.create" class="test-option-violators-create">Report</option>
-          <option value="/users/{{user.user_username}}/blacklist.confirm" data-screen-name="{{user.display_name}}">Block</option>
+          <option value="/users/{{user.user_username}}/blacklist.confirm" data-screen-name="{{user.user_display_name}}">Block</option>
         </select>
       </div>
       <div class="toggle-follow-button">
         <button type="button" data-action="/users/{{user.user_username}}.follow.json" class="follow-button none">Follow</button>
-        <button type="button" data-action="/users/{{user.user_username}}.unfollow.json" class="unfollow-button" data-screen-name="{{user.display_name}}">Follow</button>
+        <button type="button" data-action="/users/{{user.user_username}}.unfollow.json" class="unfollow-button" data-screen-name="{{user.user_display_name}}">Follow</button>
       </div>
     </div>
   </div>
