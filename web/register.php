@@ -81,6 +81,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		$nnid = $_POST["nnid"];
 	}
 
+	if (!$_SESSION["console"]["ParamData"]["transferable_id"] || !$_SESSION["console"]["ParamData"]["country_id"]) {
+		errorRedirect("An unknown error has occured while signing up.");
+		exit;
+	}
+
 	$result = $mysqli->query("SELECT * FROM `users`");
     $pid = 1799999999 - $result->num_rows;
     $result->close();
