@@ -59,7 +59,7 @@ unset($data);
 /// Translation soon
 
 /// Grab's console data from transferable_id in our session
-$console = $core->getConsoleByTid($database, $mysqli, $_SESSION["console"]["ParamData"]["transferable_id"]);
+$console = $core->getConsole($database, $mysqli, $_SESSION["console"]["ParamData"]["transferable_id"]);
 
 /// Console doesn't exist in database, let's redirect them to setup!
 if (!$console) {
@@ -68,5 +68,5 @@ if (!$console) {
 }
 
 /// Set our user session to the user the console is linked to and redirect to communities.
-$_SESSION["user"] = $core->getUserByPid($database, $mysqli, $console["linked_pid"]);
+$_SESSION["user"] = $core->getUserByPID($database, $mysqli, $console["linked_pid"]);
 header("Location: /communities");
