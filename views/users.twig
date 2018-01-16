@@ -1,4 +1,4 @@
-{% set title,bodyClasses = template_from_string("{{user.user_display_name}}'s Profile"),"user-page" %}
+{% set title,bodyClasses = user.user_display_name ~ "'s Profile","user-page" %}
 {% extends "_layout.twig" %}
 
 {% block mainContent %}
