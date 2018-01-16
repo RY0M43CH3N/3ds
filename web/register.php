@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 	$systems_owned = 1;
 
-	$stmt->bind_param("issssssii", $pid, "GAY", $_POST["display_name"], $_POST["username"], password_hash($_POST["password"], PASSWORD_DEFAULT), $_POST["nnid"], $_POST["email"], $_SESSION["console"]["ParamData"], $systems_owned);
+	$stmt->bind_param("issssssii", $pid, "GAY", $_POST["display_name"], $_POST["username"], password_hash($_POST["password"], PASSWORD_DEFAULT), $nnid, $_POST["email"], $_SESSION["console"]["ParamData"], $systems_owned);
 	if (!$stmt->execute()) {
 		error_log("Failed to execute $stmt - " . $stmt->error);
 		die("Failed to execute $stmt");
