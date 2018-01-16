@@ -1788,7 +1788,7 @@ var Olv = Olv || {};
         }
     }), e.View.Widget.ToolbarVisibility = Backbone.View.extend({
         initialize: function() {
-            var t = !/^\/(?:titles\/.+\/.+\/(?:topic\/|artwork\/)?(?:post)|users\/.+\/diary\/post|posts\/.+\/reply|welcome\/(?:3ds|redesign_tutorial)?|warning\/.+|welcome|register|titles\/.+\/select_album_image)$/.test(location.pathname);
+            var t = !/^\/(?:titles\/.+\/.+\/(?:topic\/|artwork\/)?(?:post)|users\/.+\/diary\/post|posts\/.+\/reply|welcome\/(?:3ds|redesign_tutorial)?|warning\/.+|welcome|register|login|titles\/.+\/select_album_image)$/.test(location.pathname);
             e.Toolbar.setVisible(t)
         }
     }), e.View.Widget.HomeButton = Backbone.View.extend({
@@ -2664,7 +2664,8 @@ var Olv = Olv || {};
             "error/post_form/:page": "errorPostForm",
             "help/(:page)": "help",
             "guide/(:page)": "guide",
-            "register": "guestRegister",
+            "register": "register",
+            "login": "login",
             "*path": "defaultRoute"
         },
         defaultRoute: function(t) {
@@ -2843,6 +2844,11 @@ var Olv = Olv || {};
             })
         },
         register: function() {
+            new e.View.Page.Common({
+                el: "body"
+            })
+        },
+        login: function() {
             new e.View.Page.Common({
                 el: "body"
             })
