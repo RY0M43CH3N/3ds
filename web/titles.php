@@ -27,7 +27,7 @@ $twig = $core->initTwig();
 
 $mysqli = $database->connect();
 
-$stmt = $mysqli->prepare("SELECT * FROM `communities` WHERE community_id = ?");
+$stmt = $mysqli->prepare("SELECT * FROM `communities` WHERE `community_id` = ?");
 if (!$stmt):
 	error_log($mysqli->error);
 	die($mysqli->error);
