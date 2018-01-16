@@ -52,12 +52,12 @@ if (!$community) {
 	exit;
 }
 
-$feelings = array();
+/*$feelings = array();
 $feelings["normal_face"] = $core->getFeelingImage($_SESSION["user"]["user_nnid"]);
 $feelings["happy_face"] = $core->getFeelingImage($_SESSION["user"]["user_nnid"], "happy_face");
 $feelings["like_face"] = $core->getFeelingImage($_SESSION["user"]["user_nnid"], "like_face");
 $feelings["surprised_face"] = $core->getFeelingImage($_SESSION["user"]["user_nnid"], "surprised_face");
 $feelings["frustrated_face"] = $core->getFeelingImage($_SESSION["user"]["user_nnid"], "frustrated_face");
-$feelings["puzzled_face"] = $core->getFeelingImage($_SESSION["user"]["user_nnid"], "puzzled_face");
+$feelings["puzzled_face"] = $core->getFeelingImage($_SESSION["user"]["user_nnid"], "puzzled_face");*/
 
-echo $twig->render("postForm.twig", ["community" => $community, "feelings" => $feelings]);
+echo $twig->render("postForm.twig", ["community" => $community/*, "feelings" => $feelings*/]);
