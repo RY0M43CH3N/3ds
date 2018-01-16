@@ -2855,7 +2855,7 @@ var Olv = Olv || {};
         register: function() {
             new e.View.Page.Common({
                 el: "body"
-            }), e.Toolbar.setVisible(!1)
+            }), e.Toolbar.setVisible(!1), this.playBGM("BGM_CAVE_SYOKAI2")
         },
     }))
 }).call(this, Olv);
