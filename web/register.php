@@ -91,19 +91,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		die($mysqli->error);
 	endif;
 
-	$systems_owned = 1;
-	$ip = "GAY";
-	$pass = password_hash($_POST["password"], PASSWORD_DEFAULT);
+	$systems_owned = 1; // 3DS
+	$password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 	unset($_POST["password"]);
 
-	$stmt->bind_param("issssssii", $pid, $ip, $_POST["display_name"], $_POST["username"], $pass, $nnid, $_POST["email"], $_SESSION["console"]["ParamData"]["country_id"], $systems_owned);
+	$stmt->bind_param("issssssii", $pid, $_SERVER["REMOTE_ADDR"], $_POST["display_name"], $_POST["username"], $password, $nnid, $_POST["email"], $_SESSION["console"]["ParamData"]["country_id"], $systems_owned);
 	if (!$stmt->execute()) {
 		error_log("Failed to execute $stmt - " . $stmt->error);
 		die("Failed to execute $stmt");
 	}
 
 	$core->setConsole($database, $mysqli, $pid, $_SESSION["console"]["ParamData"]["transferable_id"]);
-
 	echo $twig->render("registerSuccess.twig");
 	exit;
 }
