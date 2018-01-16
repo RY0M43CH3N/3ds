@@ -60,4 +60,12 @@ $feelings["surprised_face"] = $core->getFeelingImage($_SESSION["user"]["user_nni
 $feelings["frustrated_face"] = $core->getFeelingImage($_SESSION["user"]["user_nnid"], "frustrated_face");
 $feelings["puzzled_face"] = $core->getFeelingImage($_SESSION["user"]["user_nnid"], "puzzled_face");*/
 
-echo $twig->render("postForm.twig", ["community" => $community/*, "feelings" => $feelings*/]);
+$feelings = array();
+$feelings["normal_face"] = "http://res.cloudinary.com/dnhlkobfg/image/upload/v1516125327/no-nnid.png";
+$feelings["happy_face"] = "http://res.cloudinary.com/dnhlkobfg/image/upload/v1516125327/no-nnid.png";
+$feelings["like_face"] = "http://res.cloudinary.com/dnhlkobfg/image/upload/v1516125327/no-nnid.png";
+$feelings["surprised_face"] = "http://res.cloudinary.com/dnhlkobfg/image/upload/v1516125327/no-nnid.png";
+$feelings["frustrated_face"] = "http://res.cloudinary.com/dnhlkobfg/image/upload/v1516125327/no-nnid.png";
+$feelings["puzzled_face"] = "http://res.cloudinary.com/dnhlkobfg/image/upload/v1516125327/no-nnid.png";
+
+echo $twig->render("postForm.twig", ["community" => $community, "feelings" => $feelings]);
