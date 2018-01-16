@@ -40,7 +40,11 @@ if (!$stmt->execute()) {
 
 $user = $database->getResult($stmt)[0];
 unset($user["user_password"], $user["user_email"], $user["user_ip"]);
-$user["user_icon"] = $core->getFeelingImage($user["user_nnid"]);
+if ($user["user_nnid"] != null) {
+	$user["user_icon"] = $core->getFeelingImage($user["user_nnid"]);
+} else {
+	$user["user_icon"] = "http://res.cloudinary.com/dnhlkobfg/image/upload/v1516125327/no-nnid.png";
+}
 $user["user_username"] = htmlspecialchars($user["user_username"]);
 
 echo $twig->render("users.twig", ["user" => $user]);
