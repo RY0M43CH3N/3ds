@@ -27,13 +27,15 @@ $twig = $core->initTwig();
 
 $mysqli = $database->connect();
 
+// In the pinnacle of bodging we believe
+$uri = $_SERVER["REQUEST_URI"];
+$titleid2 = explode("/", substr($uri, 1))[1]; // Community ID
+
 $stmt = $mysqli->prepare("SELECT * FROM `communities` WHERE `community_id` = ?");
 if (!$stmt):
 	error_log($mysqli->error);
 	die($mysqli->error);
 endif;
-
-$titleid2 = 1;
 
 $stmt->bind_param("i", $titleid2);
 if (!$stmt->execute()) {

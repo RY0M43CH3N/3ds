@@ -25,6 +25,10 @@ $core = new Core();
 $database = new Database();
 $twig = $core->initTwig();
 
+// In the pinnacle of bodging we believe
+$uri = $_SERVER["REQUEST_URI"];
+$titleid2 = explode("/", substr($uri, 1))[1]; // Community ID
+
 $mysqli = $database->connect();
 if (!$mysqli) {
 	error_log("Failed to connect to MySQL - " . $database->mysqli->error);
@@ -36,8 +40,6 @@ if (!$stmt):
 	error_log($mysqli->error);
 	die($mysqli->error);
 endif;
-
-$titleid2 = 1;
 
 $stmt->bind_param("i", $titleid2);
 if (!$stmt->execute()) {
