@@ -82,7 +82,7 @@ if ($_SESSION["user"]) {
 				}
 				header("Location: /titles/" . $title_id . "/" . $id);
 			} else {
-				echo("shit");
+				header("Location: /titles/" . $title_id . "/" . $id);
 			}
 		} else {
 			//not implemented
