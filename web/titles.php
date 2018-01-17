@@ -69,6 +69,7 @@ foreach ($posts as $key => $post) {
 	} else {
 		$posts[$key]["post_icon"] = "http://res.cloudinary.com/dnhlkobfg/image/upload/v1516125327/no-nnid.png";
 	}
+	$posts[$key]["post_content"] = htmlspecialchars($posts[$key]["post_content"]);
 }
 
 echo $twig->render("titles.twig", ["community" => $community, "posts" => $posts]);
