@@ -26,7 +26,7 @@ if ($_SESSION["user"]) {
 				die($mysqli->error);
 			endif;
 
-			$stmt->bind_param("ssiisi", $postID, $id, $_SESSION["user"]["user_pid"], $body, $feeling);
+			$stmt->bind_param("siisi", $postID, $id, $_SESSION["user"]["user_pid"], $body, $feeling);
 			if (!$stmt->execute()) {
 				error_log("Failed to execute $stmt - " . $stmt->error);
 				die("Failed to execute $stmt");
