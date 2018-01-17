@@ -51,7 +51,11 @@
             </div>
             <div class="post-content">
               <p class="post-content-text">
-                <a href="/posts/{{post.post_id}}" class="to-permalink-button" data-pjax="1" tabindex="0">{{post.post_content}}</a>
+                {% if post.post_content is null %}
+                  <a href="/posts/{{post.post_id}}" class="to-permalink-button" data-pjax="1" tabindex="0"><img src="{{post.post_image}}"></a>
+                {% else %}
+                  <a href="/posts/{{post.post_id}}" class="to-permalink-button" data-pjax="1" tabindex="0">{{post.post_content}}</a>
+                {% endif %}
               </p>
               <div class="post-meta">
                 <button type="button" disabled="" class="symbol submit empathy-button disabled" data-feeling="normal" data-action="/posts/{{post.post_id}}/empathies"><span class="empathy-button-text">Yeah!</span></button>
