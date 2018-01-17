@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		die("Failed to execute $stmt");
 	}
 
-	$user = $database->getResult($stmt);
+	$user = $database->getResult($stmt)[0];
 
 	if (password_hash($_POST["password"], PASSWORD_DEFAULT) != $user["user_password"]) {
 		errorRedirect("Password is invalid.");
