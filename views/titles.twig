@@ -51,10 +51,10 @@
             </div>
             <div class="post-content">
               <p class="post-content-text">
-                {% if post.post_content is null %}
-                  <a href="/posts/{{post.post_id}}" class="to-permalink-button" data-pjax="1" tabindex="0"><img src="{{post.post_image}}"></a>
-                {% else %}
+                {% if post.post_content is defined and post.post_content is not null %}
                   <a href="/posts/{{post.post_id}}" class="to-permalink-button" data-pjax="1" tabindex="0">{{post.post_content}}</a>
+                {% else %}
+                  <a href="/posts/{{post.post_id}}" class="to-permalink-button" data-pjax="1" tabindex="0"><img src="{{post.post_image}}"></a>
                 {% endif %}
               </p>
               <div class="post-meta">
