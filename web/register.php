@@ -45,6 +45,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			errorRedirect("Username length must be between 6-16.");
 			exit;
 		}
+
+		$stmt = $mysqli->prepare("SELECT * FROM `users` WHERE `user_username` = ?");
+		if (!$stmt):
+			error_log($mysqli->error);
+			die($mysqli->error);
+		endif;
+
+		$stmt->bind_param("s", $_POST["username"]);
+		if (!$stmt->execute()) {
+			error_log("Failed to execute $stmt - " . $stmt->error);
+			die("Failed to execute $stmt");
+		}
+
+		$user = $database->getResult($stmt)[0];
+
+		if ($user) {
+			errorRedirect("A user with this username already exists.");
+			exit;
+		}
 	} else {
 		errorRedirect("Please enter a username.");
 		exit;
@@ -75,6 +94,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	if (isset($_POST["nnid"]) && !empty($_POST["nnid"])) {
 		if (strlen($_POST["nnid"]) < 6 || strlen($_POST["nnid"]) > 16) {
 			errorRedirect("Nintendo Network ID length must be between 6-16.");
+			exit;
+		}
+
+		if (!$core->getFeelingImage($_POST["nnid"])) {
+			errorRedirect("Invalid Nintendo Network ID.");
 			exit;
 		}
 
