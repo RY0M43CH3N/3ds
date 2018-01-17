@@ -63,8 +63,8 @@ if (!$stmt->execute()) {
 $posts = $database->getResult($stmt);
 
 for ($i = 0; $i < count($posts); $i++) {
-    $posts["post_username"][$data[$i]] = htmlspecialchars($core->getUserByPID($database, $mysqli, $posts["post_pid"][$data[$i]])["user_username"]);
-    $posts["post_icon"][$data[$i]] = $core->getFeelingImage($core->getUserByPID($database, $mysqli, $posts["post_pid"][$data[$i]])["user_nnid"]);
+    $posts[$data[$i]]["post_username"] = htmlspecialchars($core->getUserByPID($database, $mysqli, $posts[$data[$i]]["post_pid"])["user_username"]);
+    $posts[$data[$i]]["post_icon"] = $core->getFeelingImage($core->getUserByPID($database, $mysqli, $posts[$data[$i]]["post_pid"])["user_nnid"]);
 }
 
 echo $twig->render("titles.twig", ["community" => $community, "posts" => $posts]);
