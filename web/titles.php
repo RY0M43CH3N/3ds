@@ -47,8 +47,8 @@ if (!$community) {
 	echo $twig->render("404.twig");
 	exit;
 }
-//"SELECT * FROM (select * from `posts` where `post_community_id` = ? ORDER BY post_date DESC LIMIT 50) as ORDER BY post_date ASC;"
-$stmt = $mysqli->prepare("SELECT * FROM (select * from `posts` where `post_community_id` = ? ORDER BY post_date DESC LIMIT 50) as ORDER BY post_date ASC;");
+
+$stmt = $mysqli->prepare("SELECT * FROM `posts` WHERE `post_community_id` = ? ORDER BY `post_date` DESC");
 if (!$stmt):
 	error_log($mysqli->error);
 	die($mysqli->error);
