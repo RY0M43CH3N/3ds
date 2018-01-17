@@ -34,7 +34,6 @@ if ($_SESSION["user"]) {
 				die("Failed to execute $stmt");
 			}
 			header("Location: /titles/" . $title_id . "/" . $id);
-		} elseif ($type == "painting") {
 		} else {
 			$painting = $_POST["painting"];
 			$stmt = $mysqli->prepare("SELECT * FROM cloudinary_keys ORDER BY RAND() LIMIT 1");
