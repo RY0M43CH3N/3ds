@@ -34,7 +34,7 @@ if ($_SESSION["user"]) {
 				die("Failed to execute $stmt");
 			}
 			header("Location: /titles/" . $title_id . "/" . $id);
-		} else {
+		} elseif ($type == "painting") {
 			$painting = $_POST["painting"];
 			$stmt = $mysqli->prepare("SELECT * FROM cloudinary_keys ORDER BY RAND() LIMIT 1");
 			if (!$stmt):
@@ -47,17 +47,17 @@ if ($_SESSION["user"]) {
 				die("Failed to execute $stmt");
 			}
 
-			$community = $database->getResult($stmt)[0];
+			$key = $database->getResult($stmt)[0];
 
 			// this part was taken from cedar, im too lazy to add cloudinarys shitty php to core
 			$pvars = array(
 				"file" => "data:image/png;base64," . $painting,
-				"api_key" => $keys["api_key"],
-				"upload_preset" => $keys["upload_preset"]
+				"api_key" => $key["api_key"],
+				"upload_preset" => $key["upload_preset"]
 			);
 
 			$curl = curl_init();
-			curl_setopt($curl, CURLOPT_URL, "https://api.cloudinary.com/v1_1/" . $keys["cloud_key"] . "/auto/upload");
+			curl_setopt($curl, CURLOPT_URL, "https://api.cloudinary.com/v1_1/" . $key["cloud_key"] . "/auto/upload");
 			curl_setopt($curl, CURLOPT_TIMEOUT, 30);
 			curl_setopt($curl, CURLOPT_POST, 1);
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -84,10 +84,13 @@ if ($_SESSION["user"]) {
 					error_log("Failed to execute $stmt - " . $stmt->error);
 					die("Failed to execute $stmt");
 				}
-				//header("Location: /titles/" . $title_id . "/" . $id);
+				header("Location: /titles/" . $title_id . "/" . $id);
 			} else {
 				header("Location: /titles/" . $title_id . "/" . $id);
 			}
+		} else {
+			//not implemented
+			header("Location: /titles/" . $title_id . "/" . $id);
 		}
 	}
 } else {
