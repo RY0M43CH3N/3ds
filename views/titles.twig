@@ -51,7 +51,7 @@
             </div>
             <div class="post-content">
               <p class="post-content-text">
-                {% if post.post_content == 0 %}
+                {% if post.post_image %}
                   <a href="/posts/{{post.post_id}}" class="to-permalink-button" data-pjax="1" tabindex="0"><img src="{{post.post_image}}"></a>
                 {% endif %}
                 {% if post.post_content %}
