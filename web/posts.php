@@ -34,8 +34,8 @@ if ($_SESSION["user"]) {
 				die("Failed to execute $stmt");
 			}
 			header("Location: /titles/" . $title_id . "/" . $id);
-		} elseif ($type == "drawing") {
-			$drawing = $_POST["drawing"];
+		} elseif ($type == "painting") {
+			$painting = $_POST["painting"];
 			$stmt = $mysqli->prepare("SELECT * FROM cloudinary_keys ORDER BY RAND() LIMIT 1");
 			if (!$stmt):
 				error_log($mysqli->error);
@@ -51,7 +51,7 @@ if ($_SESSION["user"]) {
 
 			// this part was taken from cedar, im too lazy to add cloudinarys shitty php to core
 			$pvars = array(
-				"file" => "data:image/png;base64," . $drawing,
+				"file" => "data:image/png;base64," . $painting,
 				"api_key" => $keys["api_key"],
 				"upload_preset" => $keys["upload_preset"]
 			);
@@ -84,10 +84,10 @@ if ($_SESSION["user"]) {
 			} else {
 				header("Location: /titles/" . $title_id . "/" . $id);
 			}
-		}/* else {
+		} else {
 			//not implemented
 			header("Location: /titles/" . $title_id . "/" . $id);
-		}*/
+		}
 	}
 } else {
 	header("Location: /titles/" . $title_id . "/" . $id);
