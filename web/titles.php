@@ -48,4 +48,23 @@ if (!$community) {
 	exit;
 }
 
-echo $twig->render("titles.twig", ["community" => $community]);
+$stmt = $mysqli->prepare("SELECT * FROM `posts` WHERE `post_community_id` = ?");
+if (!$stmt):
+	error_log($mysqli->error);
+	die($mysqli->error);
+endif;
+
+$stmt->bind_param("i", $titleid2);
+if (!$stmt->execute()) {
+	error_log("Failed to execute $stmt - " . $stmt->error);
+	die("Failed to execute $stmt");
+}
+
+$posts = $database->getResult($stmt);
+
+for ($i = 0; $i < count($posts); $i++) {
+    $posts["post_username"][$data[$i]] = htmlspecialchars(getUserByPID($posts["post_pid"][$data[$i]])["user_username"]);
+    $posts["post_icon"][$data[$i]] = $core->getFeelingImage($core->getUserByPID($posts["post_pid"][$data[$i]])["user_nnid"]);
+}
+
+echo $twig->render("titles.twig", ["community" => $community, "posts" => $posts]);

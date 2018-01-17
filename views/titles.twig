@@ -37,6 +37,32 @@
       <a href="/titles/{{community.community_title_id}}/{{community.community_id}}/post" class="post-button js-post-button " data-pjax="1"><span class="symbol">Post</span></a>
       <a href="/titles/{{community.community_title_id}}/{{community.community_id}}/post_memo" class="memo-button" data-pjax="1"><span class="symbol">Saved Posts</span></a>
     </div>
+    {% for post in posts %}
+    <div class="post-list list" data-olv-community-id="{{community.community_id}}">
+      <div id="post-{{post.post_id}}" data-href="/posts/{{post.post_id}}" class="post scroll post-subtype-default">
+        <div class="body">
+          <a href="/users/{{post.post_username}}" data-pjax="1" class="user-icon-container scroll-focus"><img src="{{post.post_icon}}" class="user-icon" width="32" height="32"></a>
+          <div class="post-container">
+            <div class="user-container">
+              <p class="user-name"><a href="/users/{{post.post_username}}" data-pjax="1">rip</a></p>
+              <p class="timestamp-container">
+                <span class="timestamp">{{post.post_date}}</span>
+              </p>
+            </div>
+            <div class="post-content">
+              <p class="post-content-text">
+                <a href="/posts/{{post.post_id}}" class="to-permalink-button" data-pjax="1" tabindex="0">{{post.content}}</a>
+              </p>
+              <div class="post-meta">
+                <button type="button" disabled="" class="symbol submit empathy-button disabled" data-feeling="normal" data-action="/posts/{{post.post_id}}/empathies"><span class="empathy-button-text">Yeah!</span></button>
+                <span class="empathy symbol"><span class="symbol-label">Yeahs</span><span class="empathy-count">0</span></span><span class="reply symbol"><span class="symbol-label">Comment</span><span class="reply-count">0</span></span><span class="played symbol"><span class="symbol-label">Played</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
     <p><a href="/titles/{{community.community_title_id}}/{{community.community_id}}" data-pjax="1" class="more-button scroll">Next</a></p>
   </div>
 </div>
