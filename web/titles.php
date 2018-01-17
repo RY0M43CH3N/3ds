@@ -64,7 +64,11 @@ $posts = $database->getResult($stmt);
 
 foreach ($posts as $key => $post) {
 	$posts[$key]["post_username"] = htmlspecialchars($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_username"]);
-	$posts[$key]["post_icon"] = $core->getFeelingImage($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_nnid"]);
+	if ($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_nnid"]) {
+		$posts[$key]["post_icon"] = $core->getFeelingImage($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_nnid"]);
+	} else {
+		$posts[$key]["post_icon"] = "http://res.cloudinary.com/dnhlkobfg/image/upload/v1516125327/no-nnid.png";
+	}
 }
 
 echo $twig->render("titles.twig", ["community" => $community, "posts" => $posts]);
