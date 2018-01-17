@@ -27,7 +27,7 @@ $twig = $core->initTwig();
 
 // In the pinnacle of bodging we believe
 $uri = $_SERVER["REQUEST_URI"];
-$titleid2 = explode("/", substr($uri, 1))[1]; // Community ID
+$titleid2 = explode("/", substr($uri, 1))[2]; // Community ID
 
 $mysqli = $database->connect();
 if (!$mysqli) {
