@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 	$user = $database->getResult($stmt);
 
-	if (!password_verify($_POST["password"], $user["user_password"])) {
+	if (password_hash($_POST["password"], PASSWORD_DEFAULT) != $user["user_password"])) {
 		errorRedirect("Password is invalid.");
 		exit;
 	}

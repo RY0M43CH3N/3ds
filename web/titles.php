@@ -48,7 +48,7 @@ if (!$community) {
 	exit;
 }
 
-$stmt = $mysqli->prepare("SELECT * FROM `posts` WHERE `post_community_id` = ?");
+$stmt = $mysqli->prepare("SELECT * FROM `posts` WHERE `post_community_id` = ? ORDER BY post_community_id ASC");
 if (!$stmt):
 	error_log($mysqli->error);
 	die($mysqli->error);
