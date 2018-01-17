@@ -66,12 +66,12 @@ if ($_SESSION["user"]) {
 			curl_close($curl);
 			$pms = json_decode($out, true);
 
-			var_dump($pms);
+			//var_dump($pms);
 
 			if (@$image = $pms["secure_url"]) {
-				echo($image);
+				//echo($image);
 				$image_http = str_replace("https://", "http://", $image);
-				echo($image_http);
+				//echo($image_http);
 				$postID = $core->getContentID();
 				$stmt = $mysqli->prepare("INSERT INTO `posts` (`post_id`, `post_community_id`, `post_pid`, `post_image`, `post_feeling`) VALUES (?, ?, ?, ?, ?)");
 				if (!$stmt):
