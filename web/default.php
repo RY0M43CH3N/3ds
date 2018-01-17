@@ -34,6 +34,7 @@ $router->addRoutes(array(
 	array("GET", "/titles/[i:title_id]/[i:id]", "titles.php", "Titles-community"),
 	array("GET", "/users/[*:id]", "users.php", "Users-profile"),
 	array("GET", "/titles/[i:title_id]/[i:id]/post", "postForm.php", "Titles-post"),
+	array("POST", "/posts", "posts.php", "Post-request"),
 	array("GET", "/check_update.json", "check_update.php", "Check-update")
 ));
 
