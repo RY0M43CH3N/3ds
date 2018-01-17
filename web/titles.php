@@ -48,7 +48,7 @@ if (!$community) {
 	exit;
 }
 
-$stmt = $mysqli->prepare("SELECT * FROM `posts` WHERE `post_community_id` = ? ORDER BY `post_date` DESC");
+$stmt = $mysqli->prepare("SELECT * FROM `posts` WHERE `post_community_id` = ? ORDER BY `post_date` DESC LIMIT 20");
 if (!$stmt):
 	error_log($mysqli->error);
 	die($mysqli->error);
