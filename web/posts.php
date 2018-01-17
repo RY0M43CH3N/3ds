@@ -84,10 +84,10 @@ if ($_SESSION["user"]) {
 			} else {
 				header("Location: /titles/" . $title_id . "/" . $id);
 			}
-		} else {
+		}/* else {
 			//not implemented
 			header("Location: /titles/" . $title_id . "/" . $id);
-		}
+		}*/
 	}
 } else {
 	header("Location: /titles/" . $title_id . "/" . $id);
