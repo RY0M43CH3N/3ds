@@ -3168,7 +3168,7 @@ ul + .headline {
     width: 15px;
     height: 28px;
     top: 30px;
-    left: -10px;
+    left: -15px;
 }
 .feeling-selector .buttons li {
     display: inline-block;
@@ -3180,7 +3180,7 @@ ul + .headline {
     width: 30px;
     height: 35px;
     border: 0;
-    margin: 3px 1px 0;
+    margin: 3px 3px 0;
     background-repeat: no-repeat;
     background-position: 0 0;
     text-indent: -3000px;
@@ -3193,16 +3193,16 @@ ul + .headline {
     background-position: 0 -35px;
 }
 .feeling-selector .buttons .feeling-button-like {
-    background-position: 0 -70px;
+    background-position: -5px -70px;
 }
 .feeling-selector .buttons .feeling-button-surprised {
-    background-position: 0 -105px;
+    background-position: -5px -105px;
 }
 .feeling-selector .buttons .feeling-button-frustrated {
-    background-position: 0 -140px;
+    background-position: -5px -140px;
 }
 .feeling-selector .buttons .feeling-button-puzzled {
-    background-position: 0 -175px;
+    background-position: -5px -175px;
 }
 .feeling-selector .buttons .checked .feeling-button-normal {
     background-position: -30px 0;
