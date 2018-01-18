@@ -25,6 +25,34 @@ $core = new Core();
 $database = new Database();
 $twig = $core->initTwig();
 
+function feelingName($feelingID) {
+	$feelingName = "";
+	switch ($feelingID) {
+		case 0:
+			$feelingName = "normal_face";
+			break;
+		case 1:
+			$feelingName = "happy_face";
+			break;
+		case 2:
+			$feelingName = "like_face";
+			break;
+		case 3:
+			$feelingName = "surprised_face";
+			break;
+		case 4:
+			$feelingName = "frustrated_face";
+			break;
+		case 5:
+			$feelingName = "puzzled_face";
+			break;
+		default:
+			$feelingName = "wtf";
+			break;
+	}
+	return $feelingName;
+}
+
 $mysqli = $database->connect();
 
 // In the pinnacle of bodging we believe
@@ -67,7 +95,7 @@ $posts = $database->getResult($stmt);
 foreach ($posts as $key => $post) {
 	$posts[$key]["post_display_name"] = htmlspecialchars($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_display_name"]);
 	if ($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_nnid"]) {
-		$posts[$key]["post_icon"] = $core->getFeelingImage($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_nnid"]);
+		$posts[$key]["post_icon"] = $core->getFeelingImage($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_nnid"], feelingName($posts[$key]["post_feeling"]));
 	} else {
 		$posts[$key]["post_icon"] = "http://res.cloudinary.com/dnhlkobfg/image/upload/v1516125327/no-nnid.png";
 	}
