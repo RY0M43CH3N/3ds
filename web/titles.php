@@ -65,7 +65,7 @@ if (!$stmt->execute()) {
 $posts = $database->getResult($stmt);
 
 foreach ($posts as $key => $post) {
-	$posts[$key]["user_display_name"] = htmlspecialchars($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_display_name"]);
+	$posts[$key]["post_display_name"] = htmlspecialchars($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_display_name"]);
 	if ($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_nnid"]) {
 		$posts[$key]["post_icon"] = $core->getFeelingImage($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_nnid"]);
 	} else {
