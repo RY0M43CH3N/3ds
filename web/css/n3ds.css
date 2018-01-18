@@ -3190,19 +3190,19 @@ ul + .headline {
     background-position: 0 0;
 }
 .feeling-selector .buttons .feeling-button-happy {
-    background-position: 0 -35px;
+    background-position: -20px -35px;
 }
 .feeling-selector .buttons .feeling-button-like {
-    background-position: -5px -70px;
+    background-position: -20px -70px;
 }
 .feeling-selector .buttons .feeling-button-surprised {
-    background-position: -5px -105px;
+    background-position: -20px -105px;
 }
 .feeling-selector .buttons .feeling-button-frustrated {
-    background-position: -5px -140px;
+    background-position: -20px -140px;
 }
 .feeling-selector .buttons .feeling-button-puzzled {
-    background-position: -5px -175px;
+    background-position: -20px -175px;
 }
 .feeling-selector .buttons .checked .feeling-button-normal {
     background-position: -30px 0;
