@@ -34,7 +34,7 @@
 				<div class="feeling-selector expression">
 					<ul class="buttons">
 						<li class="checked">
-							<input type="radio" name="feeling_id" value="0" class="feeling-button-normal" data-sound="SE_OLV_OK_SUB">
+							<input type="radio" name="feeling_id" value="0" class="feeling-button-normal" checked data-sound="SE_OLV_OK_SUB">
 						</li>
 						<li class="">
 							<input type="radio" name="feeling_id" value="1" class="feeling-button-happy" data-sound="SE_OLV_OK_SUB">
@@ -53,28 +53,29 @@
 						</li>
 					</ul>
 				</div>
-				<input type="hidden" name="album_image_id" data-save-user-input="1" value="">
+				<input type="hidden" name="album_image_id" value="">
 				<div class="image-selector dropdown">
-					<input id="image-input-file" type="file" name="screenshot" disabled="" data-sound="SE_OLV_OK_SUB">
-					<a class="dropdown-toggle" href="javascript:void(0)"><img class="preview-image" src="http://res.cloudinary.com/dnhlkobfg/img/add-post-no-image.png" data-forbidden-src="http://res.cloudinary.com/dnhlkobfg/img/add-post-image-forbidden.png" data-default-src="http://res.cloudinary.com/dnhlkobfg/img/add-post-no-image.png"></a>
+					<a class="dropdown-toggle">
+						<img class="preview-image" src="http://res.cloudinary.com/dnhlkobfg/img/add-post-no-image.png" data-forbidden-src="http://res.cloudinary.com/dnhlkobfg/img/add-post-image-forbidden.png" data-default-src="http://res.cloudinary.com/dnhlkobfg/img/add-post-no-image.png">
+					</a>
 					<div class="dropdown-menu">
 						<div class="image-selector-window">
 							<div class="image-selector-section-wrapper">
 								<div class="image-content">
 									<label class="capture-button upside" style="">
 									<img src="http://res.cloudinary.com/dnhlkobfg/img/dummy-image/screenshot-dummy-3ds-upper.jpeg" class="capture-image">
-									<input type="radio" name="screenshot_type" value="upside" data-sound="SE_OLV_OK_SUB" data-save-user-input="1" autocomplete="off">
+									<input type="radio" name="screenshot_type" value="upside" data-sound="SE_OLV_OK_SUB">
 									</label>
 									<label class="capture-button downside" style="">
 									<img src="http://res.cloudinary.com/dnhlkobfg/img/dummy-image/screenshot-dummy-3ds-low.jpeg" class="capture-image">
-									<input type="radio" name="screenshot_type" value="downside" data-sound="SE_OLV_OK_SUB" data-save-user-input="1" autocomplete="off">
+									<input type="radio" name="screenshot_type" value="downside" data-sound="SE_OLV_OK_SUB">
 									</label>
 								</div>
 								<div class="image-selector-section-options">
 									<div class="image-selector-section-options-content">
 										<label class="no-select-button">
 										No Screenshot
-										<input type="radio" name="screenshot_type" value="null" data-save-user-input="1" data-value="" data-src="http://res.cloudinary.com/dnhlkobfg/img/add-post-no-image.png" data-sound="SE_OLV_CANCEL" autocomplete="off">
+										<input type="radio" name="screenshot_type" value="null" checked data-value="" data-src="http://res.cloudinary.com/dnhlkobfg/img/add-post-no-image.png" data-sound="SE_OLV_CANCEL">
 										</label>
 									</div>
 								</div>
@@ -85,7 +86,7 @@
 				<div class="textarea-with-menu active-text">
 					<menu class="textarea-menu">
 						<li><label class="textarea-menu-text">
-							<input type="radio" name="_post_type" value="body" data-sound="SE_OLV_TEXTBOX">
+							<input type="radio" name="_post_type" value="body" checked data-sound="SE_OLV_TEXTBOX">
 							</label>
 						</li>
 						<li><label class="textarea-menu-memo">
