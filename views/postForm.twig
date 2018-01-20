@@ -27,6 +27,9 @@
 		<form method="post" action="/posts" id="test-3ds-post-form" data-redirect-to="/titles/{{community.community_title_id}}/{{community.community_id}}" data-is-own-title="1" enctype="multipart/form-data">
 			<input type="hidden" name="olive_title_id" value="{{community.community_title_id}}">
 			<input type="hidden" name="olive_community_id" value="{{community.community_id}}">
+			<input type="hidden" name="view_id" value="">
+			<input type="hidden" name="page_param" value="">
+			<input type="hidden" name="back_to_community" value="">
 			<div class="add-post-page-content">
 				<div class="feeling-selector expression">
 					<ul class="buttons">
@@ -50,6 +53,7 @@
 						</li>
 					</ul>
 				</div>
+				<input type="hidden" name="album_image_id" value="">
 				<div class="textarea-with-menu active-text">
 					<menu class="textarea-menu">
 						<li><label class="textarea-menu-text">
