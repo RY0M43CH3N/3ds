@@ -30,7 +30,7 @@
     </div>
     {% for post in posts %}
     <div class="post-list list" data-olv-community-id="{{community.community_id}}">
-      <div id="post-{{post.post_id}}" data-href="/posts/{{post.post_id}}" class="post scroll post-subtype-default">
+      <div id="post-{{post.post_id}}" class="post scroll post-subtype-default">
         <div class="body">
           <a href="/users/{{post.post_username}}" data-pjax="1" class="user-icon-container scroll-focus"><img src="{{post.post_icon}}" class="user-icon" width="32" height="32"></a>
           <div class="post-container">
