@@ -24,6 +24,15 @@ $core = new Core();
 $database = new Database();
 $twig = $core->initTwig();
 
+// Hold up, we're in foxverse 2!
+if (!$_SESSION["user"]) {
+	header("Location: /titles/show");
+	exit;
+} elseif ($_SESSION["user"]["user_disabled"] == 1){
+	echo $twig->render("disabled.twig");
+	exit;
+}
+
 $mysqli = $database->connect();
 
 $stmt = $mysqli->prepare("SELECT * FROM `communities`");

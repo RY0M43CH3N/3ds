@@ -1,14 +1,23 @@
 <?php
 require_once("../lib/Database.php");
 require_once("../lib/Core.php");
-session_start();
 
 $core = new Core();
 $database = new Database();
+$twig = $core->initTwig();
+
+// Hold up, we're in foxverse 2!
+if (!$_SESSION["user"]) {
+	header("Location: /titles/show");
+	exit;
+} elseif ($_SESSION["user"]["user_disabled"] == 1){
+	echo $twig->render("disabled.twig");
+	exit;
+}
+
 $mysqli = $database->connect();
 
 // spaghetti code below
-
 if ($_SESSION["user"]) {
 	if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		$title_id = $_POST["olive_title_id"];

@@ -69,4 +69,8 @@ if (!$console) {
 
 /// Set our user session to the user the console is linked to and redirect to communities.
 $_SESSION["user"] = $core->getUserByPID($database, $mysqli, $console["linked_pid"]);
+if ($_SESSION["user"]["user_disabled"] == 1){
+	echo $twig->render("disabled.twig");
+	exit;
+}
 header("Location: /communities");

@@ -19,11 +19,19 @@
 
 require_once("../lib/Core.php");
 require_once("../lib/Database.php");
-session_start();
 
 $core = new Core();
 $database = new Database();
 $twig = $core->initTwig();
+
+// Hold up, we're in foxverse 2!
+if (!$_SESSION["user"]) {
+	header("Location: /titles/show");
+	exit;
+} elseif ($_SESSION["user"]["user_disabled"] == 1){
+	echo $twig->render("disabled.twig");
+	exit;
+}
 
 // In the pinnacle of bodging we believe
 $uri = $_SERVER["REQUEST_URI"];
