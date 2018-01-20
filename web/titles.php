@@ -78,7 +78,7 @@ if (!$community) {
 	exit;
 }
 
-$stmt = $mysqli->prepare("SELECT * FROM `posts` WHERE `post_community_id` = ? ORDER BY `post_date` DESC LIMIT 20");
+$stmt = $mysqli->prepare("SELECT * FROM `posts` WHERE `post_community_id` = ? ORDER BY `post_date` DESC");
 if (!$stmt):
 	error_log($mysqli->error);
 	die($mysqli->error);
@@ -93,6 +93,7 @@ if (!$stmt->execute()) {
 $posts = $database->getResult($stmt);
 
 foreach ($posts as $key => $post) {
+	$posts[$key]["post_username"] = htmlspecialchars($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_username"]);
 	$posts[$key]["post_display_name"] = htmlspecialchars($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_display_name"]);
 	if ($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_nnid"]) {
 		$posts[$key]["post_icon"] = $core->getFeelingImage($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_nnid"], feelingName($posts[$key]["post_feeling"]));

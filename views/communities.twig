@@ -15,119 +15,94 @@
 		</span>
 	</h1>
 </div>
-<div class="community-top-top-container">
-	<span class="top-left-button title-search-button"><span class="symbol">Search</span><input data-action="/titles/search" name="query" class="title-search-title-id" minlength="2" maxlength="20" type="text" monospace="on" guide="Search Communities" cave_oninput="$(document.activeElement).trigger('input')" value=""></span>
-	<a href="/communities/favorites" class="favorites-button top-right-button" data-pjax="1"><span class="symbol">Favorite Communities</span></a>
-</div>
 <div class="body-content" id="community-top">
 	<div class="news-label-content">
-	</div>
-	<div id="identified-user-banner" class="news-label us">
-		<a href="/identified_user_posts" data-pjax="#body">
-		<span class="title">Get the latest news here!</span>
-		<span class="text">Posts from Verified Users</span>
-		</a>
 	</div>
 	<div class="community-list">
 		<div class="headline with-filter">
 			<h2>General Communities</h2>
 		</div>
 		<ul class="list-content-with-icon-and-text arrow-list" id="community-top-content">
-			{% set i = 0 %}
 			{% for community in communities %}
-				{% if i < 6 %}
-					{% if community.community_hidden == 0 %}
-						{% if community.community_type == 0 %}
-							<li id="community-{{community.id}}" class=" has-other-communities">
-								<span class="icon-container"><img src="{{community.community_icon}}" class="icon" width="48" height="48"></span>
-								<a href="/titles/{{community.community_title_id}}/{{community.community_id}}" class="arrow-button scroll" data-pjax="1"></a>
-								<div class="body">
-									<span class="community-name title">{{community.community_name}}</span>
-									{% if community.community_platform == 1 %}
-										<span class="platform-tag platform-tag-3ds"></span>
-									{% elseif community.community_platform == 2 %}
-										<span class="platform-tag platform-tag-wiiu"></span>
-									{% elseif community.community_platform == 3 %}
-										<span class="platform-tag platform-tag-wiiu-3ds"></span>
-									{% endif %}
-									<span class="text">General Community</span>
-								</div>
-							</li>
-						{% endif %}
+				{% if community.community_hidden == 0 %}
+					{% if community.community_type == 0 %}
+						<li id="community-{{community.id}}" class=" has-other-communities">
+							<span class="icon-container"><img src="{{community.community_icon}}" class="icon" width="48" height="48"></span>
+							<a href="/titles/{{community.community_title_id}}/{{community.community_id}}" class="arrow-button scroll" data-pjax="1"></a>
+							<div class="body">
+								<span class="community-name title">{{community.community_name}}</span>
+								{% if community.community_platform == 1 %}
+									<span class="platform-tag platform-tag-3ds"></span>
+								{% elseif community.community_platform == 2 %}
+									<span class="platform-tag platform-tag-wiiu"></span>
+								{% elseif community.community_platform == 3 %}
+									<span class="platform-tag platform-tag-wiiu-3ds"></span>
+								{% endif %}
+								<span class="text">General Community</span>
+							</div>
+						</li>
 					{% endif %}
 				{% endif %}
-			{% set i = i + 1 %}
 			{% endfor %}
 		</ul>
-		<a href="/communities/general_all" class="more-button scroll" data-pjax="1">Show More</a>
 		<div class="headline with-filter">
 			<h2>Game Communities</h2>
 		</div>
 		<ul class="list-content-with-icon-and-text arrow-list" id="community-top-content">
-			{% set i = 0 %}
 			{% for community in communities %}
-				{% if i < 6 %}
-					{% if community.community_hidden == 0 %}
-						{% if community.community_type > 0 and community.community_type < 4 %}
-							<li id="community-{{community.id}}" class=" has-other-communities">
-								<span class="icon-container"><img src="{{community.community_icon}}" class="icon" width="48" height="48"></span>
-								<a href="/titles/{{community.community_title_id}}/{{community.community_id}}" class="arrow-button scroll" data-pjax="1"></a>
-								<div class="body">
-									<span class="community-name title">{{community.community_name}}</span>
-									{% if community.community_platform == 1 %}
-										<span class="platform-tag platform-tag-3ds"></span>
-									{% elseif community.community_platform == 2 %}
-										<span class="platform-tag platform-tag-wiiu"></span>
-									{% elseif community.community_platform == 3 %}
-										<span class="platform-tag platform-tag-wiiu-3ds"></span>
-									{% endif %}
-									{% if community.community_type == 1 %}
-										<span class="text">Wii U Games</span>
-									{% elseif community.community_type == 2 %}
-										<span class="text">3DS Games</span>
-									{% elseif community.community_type == 3 %}
-										<span class="text">Wii U Games・3DS Games</span>
-									{% endif %}
-								</div>
-							</li>
-						{% endif %}
+				{% if community.community_hidden == 0 %}
+					{% if community.community_type > 0 and community.community_type < 4 %}
+						<li id="community-{{community.id}}" class=" has-other-communities">
+							<span class="icon-container"><img src="{{community.community_icon}}" class="icon" width="48" height="48"></span>
+							<a href="/titles/{{community.community_title_id}}/{{community.community_id}}" class="arrow-button scroll" data-pjax="1"></a>
+							<div class="body">
+								<span class="community-name title">{{community.community_name}}</span>
+								{% if community.community_platform == 1 %}
+									<span class="platform-tag platform-tag-3ds"></span>
+								{% elseif community.community_platform == 2 %}
+									<span class="platform-tag platform-tag-wiiu"></span>
+								{% elseif community.community_platform == 3 %}
+									<span class="platform-tag platform-tag-wiiu-3ds"></span>
+								{% endif %}
+								{% if community.community_type == 1 %}
+									<span class="text">Wii U Games</span>
+								{% elseif community.community_type == 2 %}
+									<span class="text">3DS Games</span>
+								{% elseif community.community_type == 3 %}
+									<span class="text">Wii U Games・3DS Games</span>
+								{% endif %}
+							</div>
+						</li>
 					{% endif %}
 				{% endif %}
-			{% set i = i + 1 %}
 			{% endfor %}
 		</ul>
-		<a href="/communities/game_all" class="more-button scroll" data-pjax="1">Show More</a>
 		<div class="headline with-filter">
 			<h2>Special Communities</h2>
 		</div>
 		<ul class="list-content-with-icon-and-text arrow-list" id="community-top-content">
-			{% set i = 0 %}
 			{% for community in communities %}
-				{% if i < 6 %}
-					{% if community.community_hidden == 0 %}
-						{% if community.community_type == 4 %}
-							<li id="community-{{community.id}}" class=" has-other-communities">
-								<span class="icon-container"><img src="{{community.community_icon}}" class="icon" width="48" height="48"></span>
-								<a href="/titles/{{community.community_title_id}}/{{community.community_id}}" class="arrow-button scroll" data-pjax="1"></a>
-								<div class="body">
-									<span class="community-name title">{{community.community_name}}</span>
-									{% if community.community_platform == 1 %}
-										<span class="platform-tag platform-tag-3ds"></span>
-									{% elseif community.community_platform == 2 %}
-										<span class="platform-tag platform-tag-wiiu"></span>
-									{% elseif community.community_platform == 3 %}
-										<span class="platform-tag platform-tag-wiiu-3ds"></span>
-									{% endif %}
-									<span class="text">Special Community</span>
-								</div>
-							</li>
-						{% endif %}
+				{% if community.community_hidden == 0 %}
+					{% if community.community_type == 4 %}
+						<li id="community-{{community.id}}" class=" has-other-communities">
+							<span class="icon-container"><img src="{{community.community_icon}}" class="icon" width="48" height="48"></span>
+							<a href="/titles/{{community.community_title_id}}/{{community.community_id}}" class="arrow-button scroll" data-pjax="1"></a>
+							<div class="body">
+								<span class="community-name title">{{community.community_name}}</span>
+								{% if community.community_platform == 1 %}
+									<span class="platform-tag platform-tag-3ds"></span>
+								{% elseif community.community_platform == 2 %}
+									<span class="platform-tag platform-tag-wiiu"></span>
+								{% elseif community.community_platform == 3 %}
+									<span class="platform-tag platform-tag-wiiu-3ds"></span>
+								{% endif %}
+								<span class="text">Special Community</span>
+							</div>
+						</li>
 					{% endif %}
 				{% endif %}
-			{% set i = i + 1 %}
 			{% endfor %}
 		</ul>
-		<a href="/communities/special_all" class="more-button scroll" data-pjax="1">Show More</a>
 	</div>
 </div>
 {% endblock %}
