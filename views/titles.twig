@@ -29,6 +29,8 @@
       <a href="/titles/{{community.community_title_id}}/{{community.community_id}}/post" class="post-button js-post-button" data-pjax="1"><span class="symbol">Post</span></a>
     </div>
     {% for post in posts %}
+    {% if post.post_deleted == 0 %}
+    {% if post.post_disabled == 0 %}
     <div class="post-list list" data-olv-community-id="{{community.community_id}}">
       <div id="post-{{post.post_id}}" class="post scroll post-subtype-default">
         <div class="body">
@@ -54,6 +56,8 @@
         </div>
       </div>
     </div>
+    {% endif %}
+    {% endif %}
     {% endfor %}
   </div>
 </div>

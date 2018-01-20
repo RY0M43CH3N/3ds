@@ -101,6 +101,7 @@ if (!$stmt->execute()) {
 $posts = $database->getResult($stmt);
 
 foreach ($posts as $key => $post) {
+	$posts[$key]["post_disabled"] = htmlspecialchars($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_disabled"]);
 	$posts[$key]["post_username"] = htmlspecialchars($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_username"]);
 	$posts[$key]["post_display_name"] = htmlspecialchars($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_display_name"]);
 	if ($core->getUserByPID($database, $mysqli, $posts[$key]["post_pid"])["user_nnid"]) {
