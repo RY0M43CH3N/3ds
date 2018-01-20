@@ -25,11 +25,9 @@ $database = new Database();
 $twig = $core->initTwig();
 
 // Hold up, we're in foxverse 2!
-if (!$_SESSION["user"]) {
-	header("Location: /titles/show");
-	exit;
-} elseif ($_SESSION["user"]["user_disabled"] == 1){
-	echo $twig->render("disabled.twig");
+if ($_SESSION["user"]) {
+	// nigga why the fuck are you going to login if you're already registered/logged in???
+	header("Location: /communities");
 	exit;
 }
 
