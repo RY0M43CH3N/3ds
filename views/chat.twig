@@ -51,7 +51,7 @@
 	            success: function(data) {
 	                var obj = jQuery.parseJSON(data);
 	                var t = new Date(obj.time_stamp);
-	                appendMessage("[" + t.toISOString() + "] " + obj.username + ": " + obj.message);
+	                emitText("[" + t.toISOString() + "] " + obj.username + ": " + obj.message);
 	                getMessage(obj.timestamp);
 	            }
 	        }
