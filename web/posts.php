@@ -24,6 +24,23 @@ if ($_SESSION["user"]) {
 		$id = $_POST["olive_community_id"];
 		$feeling = $_POST["feeling_id"];
 		$type = $_POST["_post_type"];
+		$stmt = $mysqli->prepare("SELECT * FROM `communities` WHERE `community_id` = ?");
+		if (!$stmt):
+			error_log($mysqli->error);
+			die($mysqli->error);
+		endif;
+
+		$stmt->bind_param("i", $id);
+		if (!$stmt->execute()) {
+			error_log("Failed to execute $stmt - " . $stmt->error);
+			die("Failed to execute $stmt");
+		}
+
+		$community = $database->getResult($stmt)[0];
+		if ($_SESSION["user"]["user_permission"] > $community["community_permission"]) {
+		} else {
+			exit;
+		}
 		if ($type == "body") {
 			$body = $_POST["body"];
 			if (strlen($body) < 2) {
