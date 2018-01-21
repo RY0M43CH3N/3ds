@@ -37,7 +37,8 @@ if ($_SESSION["user"]) {
 		}
 
 		$community = $database->getResult($stmt)[0];
-		if ($_SESSION["user"]["user_permission"] != $community["community_permission"] || $community["community_permission"] != 0) {
+		if ($_SESSION["user"]["user_permission"] == $community["community_permission"] || $community["community_permission"] == 0) {
+		} else {
 			exit;
 		}
 		if ($type == "body") {
