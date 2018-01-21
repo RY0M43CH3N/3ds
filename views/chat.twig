@@ -41,7 +41,21 @@
 	}
 
 	function getMessage(timestamp) {
-	    var queryString = {"timestamp" : timestamp};
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var obj = jQuery.parseJSON(this.responseText);
+				emitText(obj.username + ": " + obj.message);
+				getMessage(obj.timestamp);
+			}
+		}
+		if (timestamp) {
+			xhr.open("GET", "/chat/recieve?timestamp=" + timestamp, true);
+		} else {
+			xhr.open("GET", "/chat/recieve", true);
+		}
+		xhr.send();
+	    /*var queryString = {"timestamp" : timestamp};
 	
 		$.ajax(
 	        {
@@ -55,7 +69,7 @@
 	                getMessage(obj.timestamp);
 	            }
 	        }
-	    );
+	    );*/
 	}
 
 	setTimeout(function() {
