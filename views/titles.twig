@@ -30,6 +30,11 @@
       <a href="/titles/{{community.community_title_id}}/{{community.community_id}}/post" class="post-button js-post-button" data-pjax="1"><span class="symbol">Post</span></a>
     </div>
     {% endif %}
+    {% if community.community_permission == 0 %}
+    <div class="post-buttons-content with-memo-button">
+      <a href="/titles/{{community.community_title_id}}/{{community.community_id}}/post" class="post-button js-post-button" data-pjax="1"><span class="symbol">Post</span></a>
+    </div>
+    {% endif %}
     {% for post in posts %}
     {% if post.post_deleted == 0 %}
     {% if post.post_disabled == 0 %}
