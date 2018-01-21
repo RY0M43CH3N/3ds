@@ -31,7 +31,7 @@ while (true) {
         echo $json;
         break;
     } else {
-        sleep(2000);
+        sleep(1);
         clearstatcache();
         continue;
     }
