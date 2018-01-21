@@ -7,3 +7,6 @@ composer.phar
 
 # Don't commit our webhook handler!
 /web/webhook-handler.php
+
+/tmp/
+/tmp/chat

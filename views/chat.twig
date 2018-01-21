@@ -9,9 +9,60 @@
 </div>
 <div class="body-content">
 	<div class="no-content-window">
-<textarea rows="8" cols="40" style="font-size: 12px;">
-It's muffin time!
-</textarea>
+		<textarea id="messages" rows="8" cols="40" style="font-size: 12px;"></textarea>
+		<input id="message" autocomplete="off" /><button onclick="sendMessage()">Send</button>
 	</div>
 </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script>
+	function emitText(str) {
+		$("#messages").append(str + "\n");
+	}
+
+	function sendMessage() {
+		document.getElementById("message").disabled = true;
+		var queryString = {"message" : $("#message").val()};
+
+		$.ajax(
+			{
+				type: "GET",
+				url: "/chat/send",
+				data: queryString,
+				success: function(data) {
+					if (data == "ok") {
+						document.getElementById("message").disabled = false;
+						$("#message").val("");
+					} else {
+						$("#message").val("Error sending message...");
+					}
+				}
+			}
+		);
+	}
+
+	function getMessage(timestamp) {
+	    var queryString = {"timestamp" : timestamp};
+	
+		$.ajax(
+	        {
+	            type: "GET",
+	            url: "/chat/recieve",
+	            data: queryString,
+	            success: function(data) {
+	                var obj = jQuery.parseJSON(data);
+	                var t = new Date(obj.time_stamp);
+	                appendMessage("[" + t.toISOString() + "] " + obj.username + ": " + obj.message);
+	                getMessage(obj.timestamp);
+	            }
+	        }
+	    );
+	}
+
+	setTimeout(function() {
+		$(function() {
+			emitText("Attempting connection...");
+		    getMessage();
+		});
+	}, 3000);
+</script>
 {% endblock %}
