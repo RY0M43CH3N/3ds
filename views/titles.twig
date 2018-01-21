@@ -25,7 +25,7 @@
 </div>
 <div class="body-content tab3-content">
   <div class="tab-body">
-    {% if session.user.user_permission == community.community_permission %}
+    {% if session.user.user_permission != community.community_permission %}
     <div class="post-buttons-content with-memo-button">
       <a href="/titles/{{community.community_title_id}}/{{community.community_id}}/post" class="post-button js-post-button" data-pjax="1"><span class="symbol">Post</span></a>
     </div>
