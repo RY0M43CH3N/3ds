@@ -28,9 +28,9 @@ $router = new AltoRouter();
 $router->addRoutes(array(
 	array("GET|POST", "/titles/show", "titlesShow.php", "Titles-show"),
 	array("GET", "/welcome", "welcome.php", "Welcome-page"),
-	array("GET", "/chat", "chat.php", "Chat-page"),
-	array("GET", "/chat/recieve", "chatRecieve.php", "Chat-recieve"),
-	array("GET", "/chat/send", "chatSend.php", "Chat-send"),
+	//array("GET", "/chat", "chat.php", "Chat-page"),
+	//array("GET", "/chat/recieve", "chatRecieve.php", "Chat-recieve"),
+	//array("GET", "/chat/send", "chatSend.php", "Chat-send"),
 	array("GET|POST", "/register", "register.php", "Register-page"),
 	array("GET|POST", "/login", "login.php", "Login-page"),
 	array("GET", "/communities", "communities.php", "Communities-list"),
