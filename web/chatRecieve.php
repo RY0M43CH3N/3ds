@@ -32,6 +32,7 @@ while (true) {
         break;
     } else {
         sleep(1);
+        clearstatcache();
         continue;
     }
 }
