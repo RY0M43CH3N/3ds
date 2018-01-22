@@ -20,6 +20,32 @@
 	</div>
 	<div class="community-list">
 		<div class="headline with-filter">
+			<h2>Announcement Communities</h2>
+		</div>
+		<ul class="list-content-with-icon-and-text arrow-list" id="community-top-content">
+		{% for community in communities %}
+			{% if community.community_hidden == 0 %}
+				{% if community.community_type == 5 %}
+					<li id="community-{{community.id}}" class=" has-other-communities">
+						<span class="icon-container"><img src="{{community.community_icon}}" class="icon" width="48" height="48"></span>
+						<a href="/titles/{{community.community_title_id}}/{{community.community_id}}" class="arrow-button scroll" data-pjax="1"></a>
+						<div class="body">
+							<span class="community-name title">{{community.community_name}}</span>
+							{% if community.community_platform == 1 %}
+								<span class="platform-tag platform-tag-3ds"></span>
+							{% elseif community.community_platform == 2 %}
+								<span class="platform-tag platform-tag-wiiu"></span>
+							{% elseif community.community_platform == 3 %}
+								<span class="platform-tag platform-tag-wiiu-3ds"></span>
+							{% endif %}
+							<span class="text">Announcement Community</span>
+						</div>
+					</li>
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+		</ul>
+		<div class="headline with-filter">
 			<h2>General Communities</h2>
 		</div>
 		<ul class="list-content-with-icon-and-text arrow-list" id="community-top-content">
